@@ -8,6 +8,8 @@
         "qrcode.html",
         "readme.html",
         "readmeeditor.html",
+        "trashmagic.css",
+        "trashmagic.js",
         "wall.html",
         "web.html",
         "webdestroyer.html",
