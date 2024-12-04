@@ -1,6 +1,6 @@
 <?php
 
-$dnaurl = "https://trashrobot.net/dirtwizard/data/dna.txt";
+$dnaurl = "https://raw.githubusercontent.com/LafeLabs/TRASHMAGIC-HOMEPAGE/refs/heads/main/data/dna.txt";
 
 if(isset($_GET["dna"])){
     $dnaurl = $_GET["dna"];
@@ -13,7 +13,7 @@ $dna = json_decode($dnaraw);
 mkdir("data");
 mkdir("php");
 
-copy("https://https://trashrobot.net/dirtwizard/php/replicator.txt","replicator.php");
+copy("https://raw.githubusercontent.com/LafeLabs/TRASHMAGIC-HOMEPAGE/refs/heads/main/php/replicator.txt","replicator.php");
 
 
 foreach($dna->html as $value){
@@ -30,7 +30,6 @@ foreach($dna->data as $value){
 }
 
 
-
 foreach($dna->php as $value){
  
     copy($baseurl."php/".$value,"php/".$value);
@@ -38,18 +37,6 @@ foreach($dna->php as $value){
 
 }
     
-foreach($dna->scrolls as $value){
-    
-    copy($baseurl."scrolls/".$value,"scrolls/".$value);
-
-}
-    
-
-foreach($dna->iconsymbols as $value){
-    
-    copy($baseurl."iconsymbols/".$value,"iconsymbols/".$value);
-
-}
 
 
 ?>
