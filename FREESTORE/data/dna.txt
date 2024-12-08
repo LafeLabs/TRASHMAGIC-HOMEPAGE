@@ -1,32 +1,24 @@
 {
     "html": [
         "README.md",
-        "edit.html",
-        "fork.html",
+        "imagefeed.html",
         "index.html",
-        "qrcode-page.html",
         "qrcode.html",
         "readme.html",
-        "readmeeditor.html",
-        "trashmagic.css",
-        "trashmagic.html",
-        "trashmagic.js",
-        "wall.html",
-        "web.html",
-        "webdestroyer.html",
-        "webeditor.html"
+        "scrolleditor.html"
     ],
     "data": [
         "dna.txt"
     ],
     "php": [
+        "deletefile.txt",
         "dir.txt",
         "dnagenerator.txt",
         "editor.txt",
         "fileloader.txt",
         "filesaver.txt",
-        "mkdir.txt",
         "replicator.txt",
-        "text2php.txt"
+        "text2php.txt",
+        "upload.txt"
     ]
 }
