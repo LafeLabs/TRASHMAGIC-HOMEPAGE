@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <!--
+     DECK OF TRASH MAGIC SQUARES
+    -->
+
+<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA4A8AAO/vAADqrwAA6q8AAOqvAADqrwAA6q8AAOqvAADqrwAA7+8AAMAHAADf9wAAwAcAAPu/AAD4PwAA" rel="icon" type="image/x-icon">
+
+    <!--Stop Google:-->
+    <META NAME="robots" CONTENT="noindex,nofollow">
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
+
+<!--
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.js"></script>
+-->
+
+<!--       un comment to use math
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script>
+            MathJax.Hub.Config({
+                tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                processEscapes: true,
+                processClass: "mathjax",
+                ignoreClass: "no-mathjax"
+                }
+            });//			MathJax.Hub.Typeset();//tell Mathjax to update the math
+        </script>
+    -->
+
+    
+</head>
+<body>    
+
+<img id = "prevbutton" src = "https://raw.githubusercontent.com/LafeLabs/squares/main/trashmagic/left-arrow.svg"/>    
+<img id = "editbutton" src = "https://raw.githubusercontent.com/LafeLabs/squares/main/trashmagic/edit.svg"/>
+<img id = "nextbutton" src = "https://raw.githubusercontent.com/LafeLabs/squares/main/trashmagic/right-arrow.svg"/>    
+    
+<h1 id = "title"></h1>
+
+<div id = "square">
+</div>
+
+<img id = "mainimage" src = "https://raw.githubusercontent.com/LafeLabs/squares/main/trashmagic/deck-replication-glyph.svg"/>
+
+<div id = "scroll">
+
+    <div id = "stylebutton">P0W3RP01NT</div>
+
+
+    <table>
+        <tr>
+            <td>SQUARE TITLE:</td>
+            <td>
+                <input id = "titleinput"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>IMAGE URL</td>
+            <td>
+                <input id = "imageurlinput"/>
+            </td>
+        </tr>
+        <tr>
+            <td>SQUARE INDEX</td>
+            <td>
+                <input id = "indexinput"/>
+            </td>
+        </tr>
+    </table>
+    <h2>HTML CODE:</h2>
+    <div id="squarecode" contenteditable="true" spellcheck="false"></div>
+    
+</div>
+
+
+<div id = "qrcode"></div>
+
+<script>
+
+
+editor = ace.edit("squarecode");
+editor.setTheme("ace/theme/github");
+//editor.setTheme("ace/theme/vibrant_ink");
+editor.getSession().setMode("ace/mode/html");
+editor.getSession().setUseWrapMode(true);
+editor.$blockScrolling = Infinity;
+editor.setTheme("ace/theme/vibrant_ink");
+editor.getSession().setMode("ace/mode/html");
+
+squaresize = 100;
+margin = 100;
+if(innerWidth > innerHeight){
+    squaresize = innerHeight - 200;
+    margin = (innerWidth - innerHeight)/2;
+    document.getElementById("square").style.top = "150px";
+    document.getElementById("square").style.left = (margin + 100).toString() + "px";
+    document.getElementById("square").style.width = squaresize.toString() + "px";
+    document.getElementById("square").style.height = squaresize.toString() + "px";
+    
+    document.getElementById("mainimage").style.bottom = "50px";
+    document.getElementById("mainimage").style.left = (margin + 100 + 0.25*squaresize).toString() + "px";
+    document.getElementById("mainimage").style.width = (0.5*squaresize).toString() + "px";
+
+    
+    document.getElementById("scroll").style.top = "150px";
+    document.getElementById("scroll").style.width = (margin).toString() + "px";
+}
+else{
+    squaresize = innerWidth - 200;
+    margin = (innerHeight - innerWidth)/2;
+    
+    document.getElementById("square").style.top = (margin + 100).toString() + "px";
+    document.getElementById("square").style.left = "150px";
+    document.getElementById("square").style.width = squaresize.toString() + "px";
+    document.getElementById("square").style.height = squaresize.toString() + "px";
+    
+    document.getElementById("mainimage").style.bottom = (margin + 50).toString() + "px";
+    document.getElementById("mainimage").style.left = (100 + 0.25*squaresize).toString() + "px";
+    document.getElementById("mainimage").style.width = (0.5*squaresize).toString() + "px";
+
+    
+    document.getElementById("scroll").style.height = (margin).toString() + "px";
+    document.getElementById("scroll").style.width = (innerWidth - 200).toString() + "px";
+}
+
+//load deck
+deck = [];
+deckindex = 0;
+
+var httpc = new XMLHttpRequest();
+httpc.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200) {
+        deck = JSON.parse(this.responseText);
+        editor.setValue(deck[deckindex].square);
+        document.getElementById("title").innerHTML = (deckindex + 1).toString() + ":" + deck[deckindex].title;
+        document.getElementById("titleinput").value = deck[deckindex].title;
+        document.getElementById("square").innerHTML = deck[deckindex].square;
+        document.getElementById("mainimage").src = deck[deckindex].imageurl;
+        document.getElementById("imageurlinput").value  = deck[deckindex].imageurl; 
+        if(deck[deckindex].imageurl.length > 0){
+            document.getElementById("mainimage").style.border = "solid";
+        }
+        else{
+            document.getElementById("mainimage").style.border = "none";
+        }
+
+        squares = [];
+        for(var index = 0;index < deck.length;index++){
+            var newdiv = document.createElement("DIV");
+            newdiv.className = "subsquare";
+            newdiv.innerHTML = index.toString() + ":" + deck[index].title;
+            newdiv.id = "title" + index.toString();
+            document.getElementById("scroll").appendChild(newdiv);
+            newdiv.onclick = function(){
+                
+                deckindex = parseInt(this.id.substring(5));
+                editor.setValue(deck[deckindex].square);
+                if(deck[deckindex].imageurl.length > 0){
+                    document.getElementById("mainimage").style.border = "solid";
+                }
+                else{
+                    document.getElementById("mainimage").style.border = "none";
+                }
+
+                document.getElementById("titleinput").value = deck[deckindex].title;
+                    document.getElementById("mainimage").src = deck[deckindex].imageurl;
+                document.getElementById("imageurlinput").value  = deck[deckindex].imageurl;      
+                document.getElementById("square").innerHTML = deck[deckindex].square;
+                document.getElementById("title").innerHTML = deck[deckindex].title;
+                document.getElementById("indexinput").value = (deckindex + 1).toString();
+
+            }
+            squares.push(newdiv);
+        }
+    }
+};
+httpc.open("GET", "fileloader.php?filename=deck.txt", true);
+httpc.send();
+
+
+
+/*
+for(var index= 0;index < 22;index++){
+    newjson = {};
+    newjson.title = "title";
+    newjson.square = "square";
+    deck.push(newjson);
+}
+savedeck();
+
+*/
+
+function savedeck(){
+    var url = "filesaver.php";        
+    var httpc = new XMLHttpRequest();
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    httpc.send("data="+encodeURIComponent(JSON.stringify(deck,null,"    "))+"&filename=deck.txt");//send text to filesaver.php
+
+}
+
+document.getElementById("squarecode").onkeyup = function() {
+    deck[deckindex].square = editor.getSession().getValue();//this.value;
+    document.getElementById("square").innerHTML = deck[deckindex].square;
+    savedeck();
+        
+}
+
+
+document.getElementById("imageurlinput").value = "";
+document.getElementById("imageurlinput").onchange = function(){
+    document.getElementById("mainimage").src = this.value;
+    deck[deckindex].imageurl = this.value;
+    savedeck();
+        
+}
+
+document.getElementById("titleinput").onchange = function(){
+    document.getElementById("title").innerHTML = this.value;
+    deck[deckindex].title = this.value;
+    squares[deckindex].innerHTML = deckindex.toString()  + ":" + this.value;
+    savedeck();
+}
+
+document.getElementById("indexinput").value = (deckindex + 1).toString();
+document.getElementById("indexinput").onchange = function(){
+    deckindex = parseInt(this.value - 1);
+    editor.setValue(deck[deckindex].square);
+    document.getElementById("titleinput").value = (deckindex + 1).toString() + ":" + deck[deckindex].title;
+    document.getElementById("imageurlinput").value  = deck[deckindex].imageurl;       
+    document.getElementById("mainimage").src = deck[deckindex].imageurl;
+
+    document.getElementById("square").innerHTML = deck[deckindex].square;
+    if(deck[deckindex].imageurl.length > 0){
+        document.getElementById("mainimage").style.border = "solid";
+    }
+    else{
+        document.getElementById("mainimage").style.border = "none";
+    }
+
+}
+
+
+document.getElementById("prevbutton").onclick  = function(){
+    deckindex--;
+    if(deckindex < 0){
+        deckindex = deck.length -1;
+    }
+    editor.setValue(deck[deckindex].square);
+    document.getElementById("titleinput").value = deck[deckindex].title;
+    document.getElementById("mainimage").src = deck[deckindex].imageurl;
+    document.getElementById("imageurlinput").value  = deck[deckindex].imageurl;       
+    document.getElementById("title").innerHTML = (deckindex + 1).toString() + ":" + deck[deckindex].title;
+    document.getElementById("square").innerHTML = deck[deckindex].square;
+    document.getElementById("indexinput").value = (deckindex + 1).toString();
+    if(deck[deckindex].imageurl.length > 0){
+        document.getElementById("mainimage").style.border = "solid";
+    }
+    else{
+        document.getElementById("mainimage").style.border = "none";
+    }
+
+}
+document.getElementById("nextbutton").onclick  = function(){
+    deckindex++;
+    if(deckindex > deck.length - 1){
+        deckindex = 0;
+    }
+    editor.setValue(deck[deckindex].square);
+    document.getElementById("titleinput").value = deck[deckindex].title;
+    document.getElementById("mainimage").src = deck[deckindex].imageurl;
+    document.getElementById("imageurlinput").value  = deck[deckindex].imageurl;          
+    document.getElementById("square").innerHTML = deck[deckindex].square;
+    document.getElementById("title").innerHTML = (deckindex + 1).toString() + ":" + deck[deckindex].title;
+    document.getElementById("indexinput").value = (deckindex + 1).toString();
+    
+    if(deck[deckindex].imageurl.length > 0){
+        document.getElementById("mainimage").style.border = "solid";
+    }
+    else{
+        document.getElementById("mainimage").style.border = "none";
+    }
+
+}
+
+codesquaresize = 100;
+marginsize = 40;
+fontsize = 12;
+//globalurl = "http://www.trashrobot.org/qrcode.html";
+globalurl = window.location.href;
+qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: globalurl,
+	width: codesquaresize,
+	height: codesquaresize,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
+
+
+editmode = true;
+document.getElementById("editbutton").onclick = function(){
+    editmode = !editmode;
+    if(editmode){
+        document.getElementById("scroll").style.display = "block";
+    }
+    else{
+        document.getElementById("scroll").style.display = "none";
+    }
+}
+stylemode = 1;
+
+document.getElementById("mainimage").src  = "";
+
+document.getElementById("stylebutton").innerHTML = "CARDBOARD";
+    document.body.style.backgroundColor = "#9f8767";
+document.getElementById("square").style.backgroundColor = "#ffffff00";
+document.getElementById("editbutton").style.backgroundColor = "#ffffff00";    
+document.getElementById("nextbutton").style.backgroundColor = "#ffffff00";
+document.getElementById("prevbutton").style.backgroundColor = "#ffffff00";
+document.getElementById("square").style.border = "none";
+document.getElementById("square").style.color = "black";  
+document.getElementById("title").style.color = "black";  
+document.getElementById("square").style.borderRadius = "10px";  
+document.getElementById("scroll").style.color = "black";  
+document.getElementById("scroll").style.backgroundColor = "#ffffff00";
+
+
+document.getElementById("square").style.fontFamily = "Comic Sans MS";
+document.getElementById("title").style.fontFamily = "Comic Sans MS";
+
+document.getElementById("stylebutton").onclick = function(){
+    stylemode++;
+    if(stylemode > 2){
+        stylemode = 0;
+    }
+    if(stylemode == 0){
+        document.getElementById("stylebutton").innerHTML = "P0W3RP01NT";
+        document.body.style.backgroundColor = "white";
+        document.getElementById("square").style.backgroundColor = "#ffffff00";
+        document.getElementById("editbutton").style.backgroundColor = "#ffffff00";    
+        document.getElementById("nextbutton").style.backgroundColor = "#ffffff00";
+        document.getElementById("prevbutton").style.backgroundColor = "#ffffff00";
+        document.getElementById("square").style.border = "none";
+        document.getElementById("square").style.color = "black";  
+        document.getElementById("title").style.color = "black";  
+        document.getElementById("square").style.borderRadius = "10px";  
+        document.getElementById("scroll").style.color = "black";  
+        document.getElementById("scroll").style.backgroundColor = "#ffffff00";
+        document.getElementById("square").style.fontFamily = "Arial";
+        document.getElementById("title").style.fontFamily = "Arial";
+
+    }
+    if(stylemode == 1){
+        document.getElementById("stylebutton").innerHTML = "CARDBOARD";
+            document.body.style.backgroundColor = "#9f8767";
+        document.getElementById("square").style.backgroundColor = "#ffffff00";
+        document.getElementById("editbutton").style.backgroundColor = "#ffffff00";    
+        document.getElementById("nextbutton").style.backgroundColor = "#ffffff00";
+        document.getElementById("prevbutton").style.backgroundColor = "#ffffff00";
+        document.getElementById("square").style.border = "none";
+        document.getElementById("square").style.color = "black";  
+        document.getElementById("title").style.color = "black";  
+        document.getElementById("square").style.borderRadius = "10px";  
+        document.getElementById("scroll").style.color = "black";  
+        document.getElementById("scroll").style.backgroundColor = "#ffffff00";
+
+        document.getElementById("square").style.fontFamily = "Comic Sans MS";
+        document.getElementById("title").style.fontFamily = "Comic Sans MS";
+
+    }
+    if(stylemode == 2){
+        document.getElementById("stylebutton").innerHTML = "PURPLE";
+        document.body.style.backgroundColor = "black";
+        document.getElementById("square").style.backgroundColor = "#ff00ff20";
+        document.getElementById("editbutton").style.backgroundColor = "#ff2cb4";    
+        document.getElementById("nextbutton").style.backgroundColor = "#ff2cb4";
+        document.getElementById("prevbutton").style.backgroundColor = "#ff2cb4";
+        document.getElementById("square").style.border = "solid";
+        document.getElementById("square").style.color = "#ff2cb4";  
+        document.getElementById("square").style.borderColor = "#ff2cb4";  
+        document.getElementById("title").style.color = "#ff2cb4";  
+        document.getElementById("square").style.borderRadius = "10px";  
+        document.getElementById("scroll").style.color = "#ff2cb4";  
+        document.getElementById("scroll").style.backgroundColor = "#404040";  
+     document.getElementById("square").style.fontFamily = "courier";
+        document.getElementById("title").style.fontFamily = "courier";
+   
+    }
+    
+}
+
+
+</script>
+<style>
+body{
+    overflow:hidden;
+    font-family:Arial;
+}
+a{
+    color:blue;
+}
+#stylebutton{
+    border:solid;
+    text-align:center;
+    width:10em;
+    border-radius:10px;
+    cursor:pointer;
+}
+#stylebutton:hover{
+    background-color:green;    
+}
+#stylebutton:active{
+    background-color:yellow;    
+}
+
+#square{
+    position:absolute;
+    border-width:0.5px;
+    overflow:scroll;
+}
+#square li{
+    font-size:2em;
+}
+#squarecode{
+    width:90%;
+    height:20em;
+    font-family:courier;
+    color:#00ff00;
+    background-color:black;
+    font-size:14px;
+}
+#title{
+    position:absolute;
+    text-align:center;
+    width:100%;
+    z-index:-1;
+    top:-20px;
+    font-size:70px;
+    left:0px;
+}
+#prevbutton{
+    position:absolute;
+    cursor:pointer;
+    width:100px;
+    left:0px;
+    top:0px;
+}
+#nextbutton{
+    position:absolute;
+    cursor:pointer;
+    width:100px;
+    right:0px;
+    top:0px;
+}
+#editbutton{
+    position:absolute;
+    cursor:pointer;
+    width:80px;
+    right:120px;
+    top:10px;
+}
+#scroll{
+    position:absolute;
+    right:0px;
+    bottom:0px;
+    overflow:scroll;
+}
+#qrcode{
+    position:absolute;
+    left:10px;
+    bottom:10px;
+    border:solid;
+    border-color:white;
+    border-width:10px;
+}
+#mainimage{
+    position:absolute;
+    z-index:-1;
+    opacity:0.5;
+    border:solid;
+}
+.subsquare{
+    cursor:pointer;
+    margin-bottom:0.25em;
+}
+</style>
+</body>
+</html>

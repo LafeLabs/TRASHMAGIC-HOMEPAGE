@@ -1,0 +1,112 @@
+[
+    {
+        "title": "TRASHDECK",
+        "square": "<UL>\n<LI>THE DECK IS A SET OF 22 SQUARES</LI>\n<li>EACH SQUARE REPLICATES</li>\n<li>THE WHOLE DECK REPLICATES</li>\n</UL>\n\n<a href= \"index.html\">home</a>\n",
+        "imageurl": "https://raw.githubusercontent.com/LafeLabs/squares/main/trashmagic/deck-replication-glyph.svg"
+    },
+    {
+        "title": "SQUARES",
+        "square": "<ul>\n    <li>\n        BULLET LISTS\n    </li>\n    <LI>TITLES</LI>\n    <LI>IMAGES</LI>\n    <LI>HYPERLINKS</LI>\n    <LI>TEXT</LI>\n    <LI>P5JS APPS</LI>\n    <LI>GEOMETRON APPS</LI>\n    <LI>EQUATIONS</LI>\n    <LI>CALCULATORS</LI>\n    <LI>TRASH MAGIC MEME</LI>\n</ul>",
+        "imageurl": ""
+    },
+    {
+        "title": "AS ABOVE SO BELOW",
+        "square": "<UL>\n<LI>EACH CARDBOARD SQUARE HAS AN HTML IMAGE</LI>\n<li>EACH HTML SQUARE HAS A CARDBOARD IMAGE</li>\n</UL>\n\n",
+        "imageurl": ""
+    },
+    {
+        "title": "LAW OF TRASH",
+        "square": "<UL>\n    <LI>EVERYTHING FREE FOR EVERYONE EVERYWHERE RIGHT NOW!</LI>\n    <LI>MAKE EVERYTHING FROM TRASH AND WHAT WE CAN GROW!</LI>\n</UL>",
+        "imageurl": ""
+    },
+    {
+        "title": "TRASH MAGICIANS",
+        "square": "<UL>\n    <LI>CONNECTORS BETWEEN NETWORKS</LI>\n    <LI>MAGICIANS ARE ELEMENTS OF THE SETS WE REPLICATE</LI>\n    <LI>MAGICIANS SEEK TO REPLICATE</LI>\n</UL>",
+        "imageurl": ""
+    },
+    {
+        "title": "TRASH MAGIC SERVERS",
+        "square": "<UL>\n    <LI>HARDWARE ALL COMES FROM TRASH</LI>\n    <LI>NO PRIVATE DATA</LI>\n    <LI>NO USERS</LI>\n    <LI>NO PROPERTY OF ANY KIND</LI>\n    <LI>EVERYTHING REPLICATES</LI>\n</UL>",
+        "imageurl": ""
+    },
+    {
+        "title": "LARP STACK",
+        "square": "<UL>\n    <LI>LINUX</LI>\n    <LI>APACHE</LI>\n    <LI>tRashmagic</LI>\n    <LI>PHP</LI>\n    <LI>SELF-REPLICATING CODE!</LI>\n</UL>",
+        "imageurl": ""
+    },
+    {
+        "title": "FREE FOOD",
+        "square": "<UL>\n    <LI>FIND STREAMS OF FREE FOOD</LI>\n    <li>DISTRIBUTE INFORMATION ON NETWORK</li>\n    <li>DELIVER FREE FOOD TO WHERE IT'S NEEDED</li>\n    <li>REPLICATE AND GROW WHAT WORKS</li>\n    <li>SEARCHABLE WEB APP FINDS FREE FOOD AND WATER SOURCES\nBY LOCATION, TYPE, TIME</li>\n</UL>",
+        "imageurl": ""
+    },
+    {
+        "title": "FREE TOILETS",
+        "square": "<UL>\n    <LI>BUILD COMPOSTING TOILETS ON WHEELS FROM TRASH</LI>\n    <LI>COMPOST -> HEMP -> TP -> FREE TOILETS</LI>\n    <LI>DELIVER TO WHERE THEY'RE NEEDED, TOUR CAMP TO CAMP</LI>\n</UL>",
+        "imageurl": ""
+    },
+    {
+        "title": "FREE SHELTER",
+        "square": "<UL>\n    <LI>BUILD OPEN SOURCE DATABASE OF ALL VACANT PROPERTIES IN THE CITY</LI>\n    <LI>CREATE SELF-REPLICATING SEARCHABLE MAP</LI>\n    <LI>BUILD SOCIAL NETWORK  LINKING ALL THE CAMP SITES</LI>\n    <LI>BUILD SELF-REPLICATING SKELETRON STRUCTURES TO TURN INTO SHELTER</LI>\n</UL>",
+        "imageurl": ""
+    },
+    {
+        "title": "FREE MEDICINE",
+        "square": "<ul>\n    <LI>BUILD STREET BIOTECH WITH FUNGI</LI>\n    <LI>FABRICATE MEDICATION, BUILD METROLOGY, DISTRIBUTE FREE</LI>\n    <LI>GET DONATIONS OF JOINTS AND SHROOMS, DISTRIBUTE FOR FREE WITH TRASH MAGIC PHYSICAL MEDIA TO DRIVE REPLICATION</LI>\n</ul>",
+        "imageurl": ""
+    },
+    {
+        "title": "FREE CLOTHES",
+        "square": "<ul>\n    <LI>GATHER TEXTILE WASTE FROM ALL OVER THE CITY ON BIKES, FOOT, CARTS, EBIKES, SCOOTERS</LI>\n    <LI>CUT INTO SQUARES, STITCH INTO ORIGINAL CUSTOM CLOTHES, BUILD SOCIAL MEDIA INTO EVERYTHING</LI>\n    <LI>WEAR AND SHARE!</LI>\n</ul>",
+        "imageurl": ""
+    },
+    {
+        "title": "FREE POWER",
+        "square": "<UL>\n    <LI>SOLAR CHARGERS</LI>\n    <LI>BIKE GENERATORS WITH TRASH MOTORS</LI>\n    <LI>WIND-TO-BIKE DRIVE</LI>\n    <LI>WATER-TO-BIKE DRIVE</LI>\n    <LI>TRASH BATTERIES TO POWER PACKS</LI>\n    <LI>ALUMINUM CARBON CELLS FROM CHARCOAL AND ALUMINUM TRASH</LI>\n</UL>",
+        "imageurl": ""
+    },
+    {
+        "title": "FREE RIDES",
+        "square": "<UL>\n    <LI>DRIVER CO-OPS TO PUT LYFT AND UBER OUT OF BUSINESS</LI>\n    <LI>HUMAN DISPATCHERS</LI>\n    <LI>MECHANIC CO-OP, MECHANICAL SKILL SHARE</LI>\n    <LI>USE PHYSICAL MEDIA TO REPLICATE THE SET</LI>\n    <LI>SHUTTLE SERVICE BETWEEN RURAL LAND AND URBAN CAMP SITES</LI>\n</UL>",
+        "imageurl": ""
+    },
+    {
+        "title": "FREE DELIVERY",
+        "square": "<UL>\n    <LI>DRIVER CO-OP PUTS DOOR DASH OUT OF BUSINESS</LI>\n    <LI>HUMAN DISPATCHERS</LI>\n    <LI>MAKE DEALS WITH RESTAURANTS FOR FREE FOOD FOR NETWORK</LI>\n    <LI>DELIVER FREE FOOD TO THOSE WHO NEED IT</LI>\n</UL>",
+        "imageurl": ""
+    },
+    {
+        "title": "FREE CARTS",
+        "square": "<UL>\n    <LI>UNIVERSAL MICRO-MOBILITY</LI>\n    <LI>CONSUME TRASHED BIKES, TRASHED SHOPPING CARTS, TRASHED CHAIRS, TRASHED SCOOTERS</LI>\n    <LI>BUILD ELECTRIC SLED DOGS TO PULL CARTS</LI>\n</UL>",
+        "imageurl": ""
+    },
+    {
+        "title": "FREE FUEL",
+        "square": "<UL>\n    <LI>USE PYROLYSIS TO TURN PLASTIC INTO COOK GAS</LI>\n    <LI>USE PYROLYSIS TO TURN PLASTIC INTO GASOLINE</LI>\n    <LI>USE COOK GREASE FROM FREE FOOD TO MAKE BIODIESEL</LI>\n    <LI>DISTRIBUTE FREE FUEL IN RAINBOW-STRIPE-PAINTED 55 GALLON DRUMS</LI>\n    <LI>PAINT SYMBOLS ON DRUMS FOR VARIOUS ELEMENTS OF THE SET: GAS, DIESEL, WASTE OIL</LI>\n</UL>",
+        "imageurl": ""
+    },
+    {
+        "title": "TRASH BUS",
+        "square": "<UL>\n    <LI>GET OLD SCHOOL BUSES ALL AROUND THE COUNTRY</LI>\n    <LI>ADD TOILETS, WATER, KITCHEN, BUNKS, WORKSHOP</LI>\n    <LI>FIND THE PEOPLE WHO ARE DOWN TO DO ANARCHY AND GIVE THEM THE BUS</LI>\n    <LI>FIND THE PEOPLE WHO ARE DOWN TO FUND ANARCHY AND GET THEM TO PAY FOR CONVERSIONS</LI>\n    <LI>USE BUS TO DISTRIBUTE ALL THE FREE STUFF: FUEL, FOOD, CLOTHES, SERVERS, POWER,  MEDICINE, BOOKS AND SO ON\n</LI>\n<LI>DIRTY KID RESCUE TEAM, PICK UP TRAVELERS STUCK ON THE ROAD</LI>\n<LI>SHUTTLE SERVICE</LI>\n</UL>",
+        "imageurl": ""
+    },
+    {
+        "title": "FREE SCIENCE",
+        "square": "<UL>\n    <LI>SOLAR AND CLIMATE DATA</LI>\n    <LI>AIR SOIL AND WATER DATA</LI>\n    <LI>SPECTRUM DATA FROM DC TO GAMMA RAYS</LI>\n    <LI>EVERYTHING LIVES IN A WEB BROWSER</LI>\n    <LI>EVERYTHING IS PUBLIC DOMAIN</LI>\n    <LI>CENTER ALL SCIENCE ON LIFE</LI>\n    <LI>CYBERNETICS</LI>\n</UL>",
+        "imageurl": ""
+    },
+    {
+        "title": "FREE BOOKS",
+        "square": "<UL>\n    <LI>SELF-REPLICATING E-BOOKS HOSTED ON TRASH</LI>\n    <LI>EVERYTHING REPLICATES, EVERYTHING EVOLVES, EVERYTHING DIES</LI>\n    <LI>EVERYTHING IS HOSTED ON A TRASH MAGIC SERVER</LI>\n    <LI>EVERYTHING IS PUBLIC DOMAIN</LI>\n</UL>",
+        "imageurl": ""
+    },
+    {
+        "title": "FREE ADS",
+        "square": "<UL>\n    <LI>ADS WITH CONSENT:FIND WHO WANTS TO BE FOUND</LI>\n    <LI>ADVERTISE GOODS AND SERVICES ON TRASH MAGIC SERVERS</LI>\n    <LI>POST PERSONALS ADS ON TRASH MAGIC SERVERS</LI>\n    <LI>POST ARTIST/MUSICIAN PAGES ON TRASH MAGIC SERVER</LI>\n    <LI>ALL ADS PLACED VIA DIRECT PERSONAL COMMUNICATION WITH A TRASH MAGIC NETWORK OPERATOR OR TRASH MAGICIAN</LI>\n</UL>",
+        "imageurl": ""
+    },
+    {
+        "title": "FREE MUSIC",
+        "square": "<UL>\n    <LI>CREATE DIGITAL MIX TAPES SHARED BY THE ARTIST</LI>\n    <LI>CREATE ARTIST HOME PAGES WITH ALL SOCIALS AND SUPPORT</LI>\n    <LI>WINAMP IS BACK!</LI>\n    <LI>MUTUAL AID RELATIONSHIPS BETWEEN MUSICIANS AND THE NETWORK</LI>\n</UL>",
+        "imageurl": ""
+    }
+]

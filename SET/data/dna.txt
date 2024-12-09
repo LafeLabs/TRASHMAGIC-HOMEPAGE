@@ -9,6 +9,8 @@
         "qrcode.html",
         "readme.html",
         "readmeeditor.html",
+        "tarot.html",
+        "tarot.js",
         "trashmagic.css",
         "trashmagic.html",
         "trashmagic.js",

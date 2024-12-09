@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<!--
+
+FREE MIX TAPE!
+
+-->
+
+<head>
+    
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACe8wAAnHMAAO7vAAD//wAA+D8AAPu/AADauwAAirEAANq7AAD7vwAA8B8AAPx/AADv7wAAnvMAAJxzAAD+/wAA" rel="icon" type="image/x-icon" />
+    
+    
+    
+    
+    <meta charset="utf-8" />
+        <!--
+
+    WEBAMP is a JavaScript Library which brings back the magic of winamp!
+    
+    Winamp was the mp3 player of choice for a whole lot of the Napster generation, sharing music back in the 90s.
+    
+    I WAS THERE, GANDALF! I WAS THERE 3000 YEARS AGO!
+    
+        https://webamp.org/ has the information on web amp
+        
+    main code page for the project:
+    
+        https://github.com/captbaritone/webamp
+        
+    api reference:
+        
+        https://github.com/captbaritone/webamp/blob/master/packages/webamp/docs/usage.md
+        
+    webamp skins museum:
+    
+        https://skins.webamp.org/
+        
+        -->
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://unpkg.com/webamp@1.4.2/built/webamp.bundle.min.js"></script>
+        <script src="https://unpkg.com/butterchurn@2.6.7/lib/butterchurn.min.js"></script>
+    <script src="https://unpkg.com/butterchurn-presets@2.4.7/lib/butterchurnPresets.min.js"></script>
+    
+</head>
+
+<body>
+    <div id="app" style = "position:absolute;left:0px;top:0px">
+        <!-- Webamp will attempt to center itself within this div -->
+    </div>
+
+<img src = "https://raw.githubusercontent.com/LafeLabs/squares/main/trashmagic/mixtape.png" id = "squareimage"/>
+
+    <div id = "mainscroll">
+
+        <h1>TRASH MAGIC MIX TAPE!</h1>
+        <a href = "index.html">HOME</a>
+        <p>
+            PUT MUSIC FILES IN THE TRASH MAGIC FOLDER TO LOAD THEM INTO THE WINAMP PLAYER! 
+        </p>
+    </div>
+    
+    <div id = "qrcode"></div>
+    <script>
+        const Webamp = window.Webamp;
+        const webamp = new Webamp({
+            initialTracks: [
+                {
+                    metaData: {
+                        artist: "DJ Mike Llama",
+                        title: "Llama Whippin' Intro"
+                    },
+                    // NOTE: Your audio file must be served from the same domain as your HTML
+                    // file, or served with permissive CORS HTTP headers:
+                    // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+                    url: "https://cdn.jsdelivr.net/gh/captbaritone/webamp@43434d82cfe0e37286dbbe0666072dc3190a83bc/mp3/llama-2.91.mp3",
+                    duration: 5.322286
+                }
+            ],
+            // Optional. The default skin is included in the js bundle, and will be loaded by default.
+    //        initialSkin: {
+                // NOTE: Your skin file must be served from the same domain as your HTML
+                // file, or served with permissive CORS HTTP headers:
+                // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+                // Can be downloaded from https://github.com/captbaritone/webamp/raw/master/skins/TopazAmp1-2.wsz
+  //              url: "skins/Matrix_by_sukhi.wsz"
+//            },
+            availableSkins: [
+       //      { url: "./osx.wsz", name: "Mac OSX v1.5 (Aqua)" }
+            ],
+            __butterchurnOptions: {
+                importButterchurn: () => Promise.resolve(window.butterchurn),
+                getPresets: () => {
+                    const presets = window.butterchurnPresets.getPresets();
+                    return Object.keys(presets).map((name) => {
+                        return {
+                            name,
+                            butterchurnPresetObject: presets[name]
+                        };
+                    });
+                },
+                butterchurnOpen: true
+            },
+            __initialWindowLayout: {
+                main: { position: { x: 0, y: 0 } },
+                equalizer: { position: { x: 0, y: 116 } },
+                playlist: { position: { x: 0, y: 232 }, size: [0, 4] },
+                milkdrop: { position: { x: 275, y: 0 }, size: [7, 12] }
+            }
+        });
+
+        // Returns a promise indicating when it's done loading.
+        webamp.renderWhenReady(document.getElementById('app'));
+        
+
+/*
+webamp.appendTracks([
+    {url: 'https://archive.org/download/261MortiisKeiserAvEnDimensjonUkjentRemastered/204%20-%20Midnight%20Syndicate%20-%20Ride%20to%20Destiny.mp3'},
+    {url: 'https://archive.org/download/261MortiisKeiserAvEnDimensjonUkjentRemastered/203%20-%20Midnight%20Syndicate%20-%20Troubled%20Times.mp3'},
+    {url: 'https://archive.org/download/261MortiisKeiserAvEnDimensjonUkjentRemastered/211%20-%20Midnight%20Syndicate%20-%20Craft%20of%20the%20Wizard.mp3'}
+]);
+*/
+
+
+mixtapefolder = "trashmagic";//make this the name of the folder with the songs in it
+
+
+files = [];
+var httpcimages = new XMLHttpRequest();
+httpcimages.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        files = JSON.parse(this.responseText);
+        tracks = [];
+        for(var index = 0;index < files.length;index++){
+            if(files[index].substr(-4) == ".mp3" || files[index].substr(-4) == ".wav" || files[index].substr(-4) == ".ogg"){
+                var track = {};
+                track.url =  mixtapefolder + "/" + files[index];
+                tracks.push(track);
+            }
+        }
+        webamp.appendTracks(tracks);
+    }
+};
+httpcimages.open("GET", "dir.php?filename=" + mixtapefolder, true);
+httpcimages.send();
+
+/*
+skins = [];
+var httpcskins = new XMLHttpRequest();
+httpcskins.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        skins = JSON.parse(this.responseText);
+        for(var index = 0;index < skins.length;index++){
+            var skin = {};
+            skin.url = "skins/" + skins[index];
+            skin.name = skins[index];
+            webamp.options.availableSkins.push(skin);
+        }
+    }
+};
+httpcskins.open("GET", "dir.php?filename=skins", true);
+httpcskins.send();
+*/
+
+globalurl = window.location.href.split("mixtape.html")[0];
+
+
+//globalurl = "http://192.168.0.176";
+
+codesquaresize = 100;
+
+qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: globalurl,
+	width: codesquaresize,
+	height: codesquaresize,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
+
+
+</script>
+</body>
+<style>
+body{
+    background-color:black;
+    color:#ff2cb4;
+    overflow:hidden;
+    font-family:Comic Sans MS;
+}
+a{
+    color:blue;
+}
+#mainscroll{
+    position:absolute;
+    background-color:#ff00ff20;
+    border-color:#ff2cb4;
+    color:#ff2cb4;
+    right:10px;
+    bottom:10px;
+    width:40%;
+    height:40%;
+    overflow:scroll;
+    border:solid;
+    padding:1em 1em 1em 1em;
+    border-radius:1em;
+}
+#qrcode{
+    position:absolute;
+    left:10px;
+    bottom:10px;
+    border:solid;
+    border-color:white;
+    border-width:10px;
+    z-index:-1;
+}
+#squareimage{
+    position:absolute;
+    top:10px;
+    right:10px;
+    width:180px;
+    z-index:-1;
+}
+</style>
+</html>
