@@ -1,0 +1,80 @@
+
+## [HOME](scrolls/home)
+
+# SLIMEZISTOR
+ 
+The SlimeZistor is a relaxation oscillator which uses an LM358P op amp to charge and discharge a capacitor through some sample which is connected to the two probe wires.  The schematic is as follows, and should be copied and pasted on the bottom of each unit:
+ 
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-schematic-bottomsquare.png)
+
+These are the kit parts:
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-kit-parts.png)
+
+Here are links to buy the parts from amazon(enough for about 50 units for about 40 dollars):
+
+ - [$15 bojack capacitor kit](https://www.amazon.com/BOJACK-Ceramic-Capacitor-Assortment-Capacitors/dp/B07P7HRGT9/)
+ - [$6.32 10k resistors 100 units](https://www.amazon.com/Projects-100EP51210K0-10k-Resistors-Pack/dp/B0185FIOTA/)
+ - [$10 50 pin 0.1 inch pitch right angle header strips](https://www.amazon.com/Yohii-Single-Right-Header-Connector/dp/B07C89T16T/)
+ - [$7 50 units LM358P op amps](https://www.amazon.com/BOJACK-LM358P-Operational-Amplifier-LM358N/dp/B07WQWPLSP/)
+
+### [$90 Digikey cart link with part set for 100 units](https://www.digikey.com/short/dr55prcw)
+
+
+The circuit board is a 1x2 inch rectangle cut out of thin cardboard like a cereal box:
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-trashboard-photo.png)
+
+Remove pins 1,2, and 3 of the 8 pin IC:
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-chip-legs-clipped1.png)
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-chip-legs-clipped2.png)
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-chip-legs-clipped3.png)
+
+Assemble as follows, with 0.1 uF capacitor to the far left, then 1 uF and then the two to the far right which are horizontal are the 10 uF capacitors:
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-trashboard-assembled.png)
+
+This is a 5x blowup of the board, with parts labeled. Replicate this as a tool for replication to carry with you as you replicate the set:
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-board-5x.png)
+
+An array can also be cut out using a laser cutter with the following .svg file(cut out a 4 inch square of this, with the blue layer as raster and black layer as cut):
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-trashboards-2x4.svg)
+
+Here is an .svg of just one board:
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-circuit-trash.svg)
+
+This is what the bottom looks like after full assembly:
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-board-bottom.png)
+
+The enclosure is made from 4 squares each 4x4 inches in size cut from corrugated cardboard using the tools of Geometron:
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-box-assembly-parts.png)
+
+Stack and glue with Elmer's glue or wheat paste:
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-box-assembly-2layers.png)
+
+Second layer:
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-box-assembly-3layers.png)
+
+Add the circuit board to the box before adding the lid:
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-box-assembly-withboard.png)
+
+Full assembly with lid and rubber bands:
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-box-assembly-assembled.png)
+
+Fully assembled system with speaker connected to audio output and a solar panel connected to the USB power:
+
+![](https://raw.githubusercontent.com/LafeLabs/trashotron/main/trashmagic/slimezistor-sand.png)
+
+

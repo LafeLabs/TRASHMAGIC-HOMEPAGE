@@ -1,6 +1,34 @@
 {
-    "server": "https://raw.githubusercontent.com/LafeLabs/trashbook/main/",
+    "server": "https://raw.githubusercontent.com/LafeLabs/TRASHMAGIC-HOMEPAGE/refs/heads/main/TRASHBOOK/",
     "scrolls": [
-        "home"
+        "COPYTHISBOOK",
+        "CYBERALCHEMY",
+        "CYBERMAGIC",
+        "EBOOK",
+        "FAQ",
+        "GEOMETRON",
+        "HYPERCUBE",
+        "INTERNETOFDIRT",
+        "MAGIC",
+        "ML",
+        "MUSHNET",
+        "NICONET",
+        "PINET",
+        "SELLTHISBOOK",
+        "SHEFF",
+        "SLIMEZISTOR",
+        "THEMAGICDUMP",
+        "TRASH",
+        "TRASHCAMP",
+        "TRASHCARTS",
+        "TRASHMAGIC",
+        "TRASHSCOPE",
+        "TRASHSERVERS",
+        "TRASHSIGNS",
+        "UNIVERSITYOFTRASH",
+        "ZAD",
+        "home",
+        "srs",
+        "trashrobot"
     ]
 }

@@ -1,0 +1,68 @@
+
+## [HOME](scrolls/home)
+
+# COPY THIS BOOK!
+ 
+TO COPY THIS BOOK, FIRST CREATE A NEW FORK FROM ANY EXISTING TRASHBOOK BY CLICKING ON THE FORK ICON!
+
+[![](iconsymbols/fork.svg)](fork.html)
+
+THEN START MAKING NEW SCROLLS!
+
+TO COPY A WHOLE SET OF SCROLLS, CLICK ON THE CHAOS MAGIC ICON TO GET TO A SCROLL SET REPLICATOR AT [scrollset.html](scrollset.html)!
+
+[![](iconsymbols/chaos.svg)](scrollset.html)
+
+AND PUT IN THE URL OF THE SOURCE SERVER YOU WANT TO COPY A SET OF SCROLLS FROM, THEN CLICK THE REPLICATOR PHP LINK!
+
+## MORE TRASHBOOKS:
+
+ - [BERKELEY TRASHBOOK!](https://berkeley.trashrobot.org/)
+ - [GEOMETRON MAGIC!](https://gm.trashrobot.org/)
+ - [YALE TRASHBOOK!](https://yale.trashrobot.org)
+
+## CREATE A NEW SERVER!
+
+TO CREATE A NEW SERVER WITH THE BOOK OF TRASH ON IT, GET A LAPTOP FROM THE TRASH AND PUT UBUNTU ON IT!
+
+CREATE AN UBUNTU INSTALL IMAGE ON A THUMB DRIVE USING THE DIRECTIONS AT [UBUNTU.COM](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview).
+
+INSTALL APACHE AND PHP AND REPLICATE THE TRASHBOOK AS FOLLOWS FROM THE COMMAND LINE:
+
+```
+sudo apt update
+sudo apt install apache2 -y
+sudo apt install php libapache2-mod-php -y
+cd /var/www/html
+sudo rm index.html
+sudo apt install curl
+sudo curl -o replicator.php https://raw.githubusercontent.com/LafeLabs/trashbook/main/php/replicator.txt
+cd ..
+sudo chmod -R 0777 *
+cd html
+php replicator.php
+sudo chmod -R 0777 *
+
+```
+
+SCROLL SET SOURCE URL FOR GEOMETRON MAGIC:
+
+```
+https://gm.trashrobot.org/
+```
+
+SCROLL SET SOURCE SERVER FOR ALICE IN WONDERLAND(PUBLIC DOMAIN FROM [PROJECT GUTENBERG](https://www.gutenberg.org/)):
+```
+https://raw.githubusercontent.com/LafeLabs/pibrary/main/gutenberg/aliceinwonderland/
+```
+SCROLL SET SOURCE SERVER FOR ALICE IN THROUGH THE LOOKING GLASS(PUBLIC DOMAIN FROM [PROJECT GUTENBERG](https://www.gutenberg.org/)):
+```
+https://raw.githubusercontent.com/LafeLabs/pibrary/main/gutenberg/alicethroughthelookinglass/
+```
+
+SCROLL SET SOURCE SERVER FOR CHAOS BIBLE, A SELF-REPLICATING FREELY EVOLVING COPY OF THE KJV BIBLE FROM PROJECT GUTENBERG:
+```
+https://raw.githubusercontent.com/LafeLabs/pibrary/main/gutenberg/chaosbible/
+```
+
+
