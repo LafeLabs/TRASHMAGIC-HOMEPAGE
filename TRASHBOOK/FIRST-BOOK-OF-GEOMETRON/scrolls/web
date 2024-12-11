@@ -1,0 +1,182 @@
+## [home](scrolls/home)
+
+# Learn to Create Web Pages!
+
+[codeserver/](codeserver)
+
+## Introduction
+
+In order to build a truly decentralized network, we need to train millions of developers who are trained to work with the entire technological system and make it their own, in their local community, independent of any central technology resource or organization.  To do that we need web developer education which is totally decentralized, where we train people who train people and we spread web developer skills as an organic media process.  This code server exists to be a starting place for that.
+
+Community networking rests on a large number of people being able to work fluently with the languages which make the World Wide Web work.  The Web is not the Internet.  The Internet is the system by which communication devices all connect with one another.  The Web is the system by which actual documents are displayed in Web Browsers. This is based on open standards which can be freely used and copied by anyone.  
+
+Making web documents does not even require the Internet, it's just formatting, like a Microsoft Word document.  All web browsers take as input HTML, which stands for Hyper Text Markup Language.  Hypertext refers to the way that web documents contain links to other documents, making the whole Web into a "hyper document" which can connect an infinite network of interconnected documents(the World Wide Web).
+
+The "Open Web" refers to all the HTML documents which are directly visible to everyone on the web, who can simply point a browser to the file to see it.  The Open Web has in the last few years been eclipsed in power by a very small group of bad actors like Facebook, and has been deliberately broken by the "app stores" of the two cell phone platform monopolies.  But the Open Web still exists, and is easier to create things on than ever, in spite of the best efforts of the bad actors from the West Coast of the United States.  
+
+The languages we will use in the system presented here include HTML for making web documents, JavaScript for making scripts in web documents, CSS for formatting web documents, PHP for connecting web documents with files on a web server, JSON for storing information in a simple format both humans and machines can read, python for scientific computing, Arduino for controlling hardware, and Geometron for making graphics and controlling art robots for fabricating physical things.
+
+## HTML
+
+HTML consists of text, along with various "tags" which refer to "elements" which tell computers how to make things other than pure text appear on the screen, as well as how to format that text.  These elements include images, links, various elements for organizing information, scripts which do things, style elements which format things, and various typical text formatting elements like bold face, headings, bulleted lists, and numbered lists and so on.
+
+By far the best resource for starting from scratch with HTML is the tutorials on [w3schools.com](https://www.w3schools.com/).  The reference which can be full of annoying jargon and has a lack of good examples but is more complete is the [Mozilla Developers Network(MDN)](https://developer.mozilla.org/en-US/).  The best place to see nice little examples of clever things with HTML/CSS/JavaScript is [codepen,io](https://codepen.io/), which is used by many developers to showcase their cleverest and most beautiful creations.
+
+We start learning HTML by immediately diving into the code server.  To create your own code server, set up a Raspberry Pi  according to the instructions, and make a code server on it forked down from the main page.
+
+Every web page starts out with a file called index.html, which web browsers look for first before loading any other file.  To make a web page we simple edit the contents of index.html and put it in the right place.  Any file like this can be placed on any web server, and it will then be viewable as a web page from anywhere that can see that server.  Just copy and pasting index.html files can be used to immediately start publishing documents to the Open Web.  
+
+We begin by editing the example index.html file in the server, then learn to navigate the server.
+
+[go back to server](index.html)
+
+Click the scroll icon link to get back to this README file.
+
+[code/index.html](code/index.html)
+
+### CSS Files and HTML files referencing them
+
+ - [code/css.html](code/css.html)
+ - [code/body.css](code/body.css)
+ - [code/aspectratio.css](code/aspectratio.css)
+ - [code/scroll.css](code/scroll.css)
+ - [code/classes.css](code/classes.css)
+ - [code/box.css](code/box.css)
+
+### JavaScript Files and HTML which reference them
+
+ - [code/bitwise.html](code/bitwise.html)
+ - [code/boolean.html](code/boolean.html)
+ - [code/button.html](code/button.html)
+ - [code/doubler.html](code/doubler.html)
+ - [code/energy.html](code/energy.html)
+ - [code/hello.html](code/hello.html)
+ - [code/input.html](code/input.html)
+ - [code/example.html](code/example.html)
+ - [code/strings.html](code/strings.html)
+ - [code/table.html](code/table.html)
+ - [code/ace.html](code/ace.html)
+ - [code/math.html](code/math.html)
+ - [code/mathjax.html](code/mathjax.html)
+ - [code/geometron.html](code/geometron.html)
+ - [code/geometron.js](code/geometron.js)
+ - [code/hammer.html](code/hammer.html)
+ - [code/map.html](code/map.html)
+ - [code/mapfactory.js](code/mapfactory.js)
+ - [code/qrcode.html](code/qrcode.html)
+ - [code/scroll.html](code/scroll.html)
+ - [code/sketch.html](code/sketch.html)
+ - [code/sketch.js](code/sketch.js)
+
+### HTML which uses PHP
+
+ - [code/dir.html](code/dir.html)
+ - [code/wall.html](code/wall.html)
+ - [code/ipaddress.php](code/ipaddress.php)
+
+
+### Python/PHP communications
+
+ - python hello world file write
+ - language model
+ - matplotlib
+ - arduino serial readout
+
+### Arduino basics
+
+ - neopixel
+ - knob,button, pwm
+ - send data in json to serial to python which saves, loads
+ - trash robot generic stepper xyz
+ - trash robot standard printer
+ - trash robot generic dc motor movement
+ - slimezistor with json output or real time plot output
+ - accelerometer raw plots
+
+
+
+## Resources
+
+ - w3schools
+ - codepen
+ - github
+ - mdn
+ - developer tools in the browsers
+ - looking at the source
+ - php main page
+ - adafruit
+ - raspberry pi
+ - favicon.cc
+
+
+## Using the code server
+
+ - create a program
+ - destroy a program
+ - create and replicate code sets
+ - fork servers, copy servers
+ - fork and replicate servers through github
+
+
+
+
+## Links
+
+ - [languagemodel/](languagemodel/)
+ - [matplotlib/](matplotlib/)
+ - [copy javascript code set](copy.php?from=https://raw.githubusercontent.com/LafeLabs/codeserver/main/javascriptset/data/codeset.txt&to=data/codeset.txt)
+ - [code/](code/)
+ - [javascriptset/](javascriptset/)
+ - [phpset/](phpset/)
+ - [codeset.html](codeset.html)
+ - [ipaddress.php](ipaddress.php)
+ - [qrcode.html](qrcode.html)
+ - [http://localhost/](http://localhost/)
+ - [../](../)
+ - [fork.html](fork.html)
+ - [readme.html](readme.html)
+ - [home](index.html)
+ - [editor.php](editor.php)
+ - [dnagenerator.php](dnagenerator.php)
+ - [global page replicator code link](https://raw.githubusercontent.com/LafeLabs/codeserver/main/php/replicator.txt)
+ - [local replicator code link](php/replicator.txt)
+ - [replicator.php](replicator.php)
+
+## copy code sets
+
+ - [copy css code set](copy.php?from=https://raw.githubusercontent.com/LafeLabs/pi/main/learncss/codeserver/data/codeset.txt&to=data/codeset.txt)
+ - [copy JavaScript code set](copy.php?from=https://raw.githubusercontent.com/LafeLabs/pi/main/learnjavascript/codeserver/data/codeset.txt&to=data/codeset.txt)
+ - [copy PHP code set](copy.php?from=https://raw.githubusercontent.com/LafeLabs/pi/main/learnphp/codeserver/data/codeset.txt&to=data/codeset.txt)
+
+## copy replicators to local replicator.php
+
+ - [copy wall server replicator](copy.php?from=https://raw.githubusercontent.com/LafeLabs/pi/main/servers/wall/php/replicator.txt&to=replicator.php)
+ - [copy page server replicator](copy.php?from=https://raw.githubusercontent.com/LafeLabs/pi/main/servers/page/php/replicator.txt&to=replicator.php)
+ - [copy mathpage server replicator](copy.php?from=https://raw.githubusercontent.com/LafeLabs/pi/main/servers/mathpage/php/replicator.txt&to=replicator.php)
+ - [copy board server replicator](copy.php?from=https://raw.githubusercontent.com/LafeLabs/pi/main/servers/boardserver/php/replicator.txt&to=replicator.php)
+ - [copy code server replicator](copy.php?from=https://raw.githubusercontent.com/LafeLabs/pi/main/servers/codeserver/php/replicator.txt&to=replicator.php)
+ - [copy CHAOS server replicator](copy.php?from=https://raw.githubusercontent.com/LafeLabs/pi/main/servers/chaos/php/replicator.txt&to=replicator.php)
+ - [copy full geometron server replicator](copy.php?from=https://raw.githubusercontent.com/LafeLabs/pi/main/servers/geometron/php/replicator.txt&to=replicator.php)
+ - [copy image server replicator](copy.php?from=https://raw.githubusercontent.com/LafeLabs/pi/main/servers/imageserver/php/replicator.txt&to=replicator.php)
+ - [copy map server replicator](copy.php?from=https://raw.githubusercontent.com/LafeLabs/pi/main/servers/mapserver/php/replicator.txt&to=replicator.php)
+ - [copy scroll server replicator](copy.php?from=https://raw.githubusercontent.com/LafeLabs/pi/main/servers/scrollserver/php/replicator.txt&to=replicator.php)
+ - [copy symbol server replicator](copy.php?from=https://raw.githubusercontent.com/LafeLabs/pi/main/servers/symbolserver/php/replicator.txt&to=replicator.php)
+ - [copy icon server replicator](copy.php?from=https://raw.githubusercontent.com/LafeLabs/pi/main/servers/iconserver/php/replicator.txt&to=replicator.php)
+ - [copy classifieds server replicator](copy.php?from=https://raw.githubusercontent.com/LafeLabs/pi/main/servers/classifieds/php/replicator.txt&to=replicator.php)
+
+## links to replicators
+
+ - [wall server replicator](https://raw.githubusercontent.com/LafeLabs/pi/main/servers/wall/php/replicator.txt)
+ - [page server replicator](https://raw.githubusercontent.com/LafeLabs/pi/main/servers/page/php/replicator.txt)
+ - [mathpage server replicator](https://raw.githubusercontent.com/LafeLabs/pi/main/servers/mathpage/php/replicator.txt)
+ - [board server replicator](https://raw.githubusercontent.com/LafeLabs/pi/main/servers/boardserver/php/replicator.txt)
+ - [code server replicator](https://raw.githubusercontent.com/LafeLabs/pi/main/servers/codeserver/php/replicator.txt)
+ - [CHAOS server replicator](https://raw.githubusercontent.com/LafeLabs/pi/main/servers/chaos/php/replicator.txt)
+ - [full geometron server replicator](https://raw.githubusercontent.com/LafeLabs/pi/main/servers/geometron/php/replicator.txt)
+ - [image server replicator](https://raw.githubusercontent.com/LafeLabs/pi/main/servers/imageserver/php/replicator.txt)
+ - [map server replicator](https://raw.githubusercontent.com/LafeLabs/pi/main/servers/mapserver/php/replicator.txt)
+ - [scroll server replicator](https://raw.githubusercontent.com/LafeLabs/pi/main/servers/scrollserver/php/replicator.txt)
+ - [symbol server replicator](https://raw.githubusercontent.com/LafeLabs/pi/main/servers/symbolserver/php/replicator.txt)
+ - [icon server replicator](https://raw.githubusercontent.com/LafeLabs/pi/main/servers/iconserver/php/replicator.txt)
+ - [classifieds server replicator](https://raw.githubusercontent.com/LafeLabs/pi/main/servers/classifieds/php/replicator.txt)
+

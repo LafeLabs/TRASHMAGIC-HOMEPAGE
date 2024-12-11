@@ -1,0 +1,8 @@
+{
+    "server": "https://raw.githubusercontent.com/LafeLabs/pibrary/main/symbolset/",
+    "symbols": [
+        "chaos.svg",
+        "circles.svg",
+        "symbol1640814454.svg"
+    ]
+}

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--
+
+        EVERYTHING IS PHYSICAL 
+        EVERYTHING IS FRACTAL
+        EVERYTHING IS RECURSIVE
+        NO MONEY 
+        MO MINING 
+        NO PROPERTY
+        LOOK AT THE INSECTS
+        LOOK AT THE FUNGI
+        LANGUAGE IS HOW THE MIND PARSES REALITY
+
+    -->
+    
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA/wAAAAD//wAA/wAAAAD/AP8A/wAApv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFUAAARGAAIxFVUABEYAAjMRFQAARGYiIjMRAABERmZiIzEAAARERGZiMwAAAARERGYiAAAAAABERiL4PwAA+78AAPu/AAD33wAA9V8AAPVfAAD1XwAA998AAOADAADhAAAA4AAAAPAAAADwAAAA+AAAAP4AAAD/wAAA" rel="icon" type="image/x-icon" />
+    
+    <!--Stop Google:-->
+    <META NAME="robots" CONTENT="noindex,nofollow">
+<!--geometron javascript library-->
+    <script src="jscode/geometron.js"></script>
+
+</head>
+<body>
+<input id = "ascii"/>    
+<input id = "bytecode"/>
+<script>
+
+bytecode = "";
+document.getElementById("ascii").value ="";
+document.getElementById("bytecode").value ="";
+
+document.getElementById("ascii").onchange = function(){
+    ascii= this.value;
+    bytecode = "0532,";
+    for(var index = 0;index < ascii.length;index++){
+        sixtyfours = (ascii.charCodeAt(index)&0700)>>6;
+        eights = (ascii.charCodeAt(index)&070)>>3;
+        ones = ascii.charCodeAt(index)&07;
+        
+        addDigit(sixtyfours);
+        addDigit(eights);
+        addDigit(ones);
+        bytecode += "0531,";
+    }
+    bytecode += "0533,";
+    document.getElementById("bytecode").value = bytecode;
+}
+
+function addDigit(digit){
+    if(digit == 0){
+        bytecode += "0520,0530,";
+    }
+    if(digit == 1){
+        bytecode += "0521,0530,";
+    }
+    if(digit == 2){
+        bytecode += "0522,0530,";
+    }
+    if(digit == 3){
+        bytecode += "0523,0530,";
+    }
+    if(digit == 4){
+        bytecode += "0524,0530,";
+    }
+    if(digit == 5){
+        bytecode += "0525,0530,";
+    }
+    if(digit == 6){
+        bytecode += "0526,0530,";
+    }
+    if(digit == 7){
+        bytecode += "0527,0530,";
+    }
+    
+}
+
+</script>
+<style>
+
+</style>
+</body>
+</html>
