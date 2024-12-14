@@ -12,6 +12,7 @@
         "trashmagic.css",
         "trashmagic.html",
         "trashmagic.js",
+        "trashmagicedit.html",
         "wall.html",
         "wall.txt",
         "web.html",
