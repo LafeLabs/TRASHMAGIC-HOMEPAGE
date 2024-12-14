@@ -1,0 +1,112 @@
+    <!DOCTYPE HTML>
+    <HTML LANG="EN">
+    <HEAD>
+       <META CHARSET="UTF-8">
+       <!--
+    
+    TRASH MAGIC!
+    
+       -->
+       <!--STOP GOOGLE:-->
+       <META NAME="ROBOTS" CONTENT="NOINDEX,NOFOLLOW">
+  
+      <LINK HREF="DATA:IMAGE/X-ICON;BASE64,AAABAAEAEBAQAAEABAAOAQAAFGAAACGAAAAQAAAAIAAAAAEABAAAAAAAGAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAP//AP///WANAP8A5DZ6ABUERWAAT/8A6BONABO86AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREREREREREREREAAAEREREREQCIGRERED3DWAAB3D3D3D3D3D3D3D3D3D3D3D3D3VVVVVVVQAFVVAAVVVQIIBRAIIBEQIAIBECAAERAGAGFGIABMYCIIBMAIIGZGIIIGYCIGZMYCIAAIAAMZMZAAIIIIIIIIIIIIIIIIIIIIIIGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" REL="ICON" TYPE="IMAGE/X-ICON" />
+      
+       <TITLE>TRASH MAGIC NETWORK</TITLE>    
+       <script type="module" src="track-list.js"></script>
+       <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    </HEAD>
+    <BODY>    
+                    <div id = "qrcode"></div>
+    <H1>THE LAST POET: HIP HOP BABY</H1>
+    <P>
+        EVERYTHING FREE FOR EVERYONE EVERYWHERE RIGHT NOW! NO ONE IS FREE UNTIL EVERYONE IS FREE! THIS IS A FREE SELF-REPLICATING ALBUM WHICH CAN BE DISTRIBUTED ON ANY COMPUTER THAT RUNS THE FREE <A href = "https://github.com/LafeLabs/TRASHMAGIC-HOMEPAGE">TRASH MAGIC SERVER SOFTWARE</A>. THIS IS A SELF-REPLICATING ALBUM! YOU REPLICATE IT YOURSELF! IF YOU REPLICATE THE ARTISTS' WORK, SUPPORT THE ARTIST, CLICK ON THEIR LINK TREE, FOLLOW SOCIALS, SUPPORT WITH PAY LINKS! WE WILL BUILD EVERYTHING FREE! FREE MEDIA! FREE SERVERS! FREE NETWORKING! FREE FOOD! FREE PANTS! FREE WATER! FREE BOOKS! THIS ALBUM IS FREE FOR ALL OF HUMANITY! IT IS PART OF THE GROWING NETWORK OF FREE THINGS!  TO COPY THE ALBUM, CHANGE THE TRACKS IN THE TRACKS FOLDER! USE THE EDIT LINK TO ADD STYLE AND IMAGES AND OTHER INFORMATION TO THE ALBUM PAGE FOR NEW ALBUMS!  
+    </P>
+    <UL>
+        <li>
+            <a href= "https://linktr.ee/thelastpoethhb">THE LAST POET LINK TREE</a>
+        </li>
+        <LI>
+            <A HREF = "https://github.com/LafeLabs/TRASHMAGIC-HOMEPAGE">TRASH MAGIC REPLICATOR SCROLL</A>
+        </LI>
+        <LI>
+            <a href = "edit.html">EDITOR</a>
+        </LI>
+        <LI>
+            <A href = "track-list.js">track-list.js</A> BY WEB DEV LEGEND <A HREF = "https://www.miriamsuzanne.com/">MIRIAM SUZANNE</A>, AVAILABLE FREE FOR ALL OF HUMANITY AT <A HREF = "https://github.com/mirisuzanne/track-list/">github.com/mirisuzanne/track-list/</A> 
+        </LI>
+        <LI>
+            TRASH MAGIC CREATED BY DIRT WIZARD, WHO LIVES AT <A HREF= "HTTPS://TRASHROBOT.ORG">TRASHROBOT.ORG</A>
+        </LI>
+    </UL>
+<div id = "tracklist">
+    
+</div>
+
+<IMG SRC = "cover.png">
+
+<script>
+
+tracks = [];
+var httpc = new XMLHttpRequest();
+httpc.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        tracks = JSON.parse(this.responseText);
+        listhtml = "<track-list>\n";
+        listhtml += "  <ol slot = \"tracks\">\n";
+        for(var index = 0;index < tracks.length;index++){
+            listhtml += "    <li>\n";
+            listhtml += "      <strong>" + tracks[index] + "</strong>\n";
+            listhtml += "      <audio controls src = \"tracks/" + tracks[index] + "\"></audio>\n";
+            listhtml += "    </li>\n";
+        }
+        listhtml += "  </ol>\n";
+        listhtml += "</track-list>";
+        document.getElementById("tracklist").innerHTML = listhtml;
+    }
+};
+
+httpc.open("GET", "dir.php?filename=tracks", true);
+httpc.send();
+
+ codesquaresize = 170;
+    marginsize = 40;
+    fontsize = 12;
+    //globalurl = "http://www.trashrobot.org/qrcode.html";
+    globalurl = window.location.href;
+    qrcode = new QRCode(document.getElementById("qrcode"), {
+    	text: globalurl,
+    	width: codesquaresize,
+    	height: codesquaresize,
+    	colorDark : "#000000",
+    	colorLight : "#ffffff",
+    	correctLevel : QRCode.CorrectLevel.H
+    });
+
+</script>
+<STYLE>
+    BODY{
+    }
+    IMG{
+        DISPLAY:BLOCK;
+        TEXT-ALIGN:CENTER;
+        max-width:80%;
+    }
+    H1{
+        TEXT-ALIGN:CENTER;
+    }
+    P{
+        PADDING: 0.5EM 1EM 0.5EM 1EM;
+    }
+    A{
+        COLOR:BLUE;
+    }
+</STYLE>
+
+    </BODY>
+    </HTML>
+    
+    
+
+
+
