@@ -1,0 +1,13 @@
+services:
+  web:
+    image: nginx:latest
+    container_name: trash_magic 
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "80:80"
+    network_mode: bridge
+networks:
+  local-network:
+    driver: bridge
