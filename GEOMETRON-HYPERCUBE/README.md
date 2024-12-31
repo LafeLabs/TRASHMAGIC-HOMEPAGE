@@ -35,7 +35,7 @@ The cube is 4 inches on a side and can be used for:
  - large collaborative art structures
  - lamps
 
-[tiktok of hand cut cube without a laser](https://www.tiktok.com/t/ZTR8AFMJp)
+
 
 To make one cube, cut out 12 of these from corrugated cardboard, stack them into four panels 3 layers thick and glue them using Elmer's glue:
 

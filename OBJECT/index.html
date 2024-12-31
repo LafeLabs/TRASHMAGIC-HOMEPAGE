@@ -1,0 +1,229 @@
+    <!doctype html>
+    <html lang="en">
+    <head>
+       <meta charset="utf-8">
+       <!--
+    
+    TRASH MAGIC!
+
+
+       -->
+       <!--Stop Google:-->
+       <META NAME="robots" CONTENT="noindex,nofollow">
+  
+      <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAP//AP///wANAP8A5Dz6ABueRwAAt/8A6BonABo86AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREREREREREREREAAAEREREREQCIgREREd3dwAAB3d3d3d3d3d3d3d3d3d3d3d3d3VVVVVVVQAFVVAAVVVQIiBRAiIBEQIAIBECAAERAgAgFgIABmYCIiBmAiIGZgIiIGYCIgZmYCIAaIAAMzMzAAiIiIiIiIiIiIiIiIiIiIiIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+      
+       <title>TRASH MAGIC NETWORK</title>    
+       <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+       <script src = "trashmagic.js"></script>
+
+    </head>
+    <body>  
+    
+    <H1>
+    <A href = "edit.html" STYLE = "font-family:arial;">EDITOR</A>
+    </H1>
+    <H1>
+    <A id = "jsonlink" STYLE = "font-family:arial;">JSON</A>
+    </H1>
+    
+    <div id = "qrcode"></div>
+    
+
+            
+<h1 id = "NAMETITLE"></h1>
+
+<table>
+    <tr>
+        <td>NEW ATTRIBUTE:</td>
+        <td>
+            <input id = "newattributeinput">
+        </td>
+    </tr>
+</table>
+
+<table id = "OBJECTtable"></table>
+
+<textarea id = "walltextarea"></textarea>
+
+
+<script>
+
+OBJECT = {};
+OBJECT.NAME = "OBJECT";
+
+document.getElementById("newattributeinput").value = "";
+document.getElementById("newattributeinput").onchange = function(){
+    OBJECT[this.value] = "";
+    savejson();
+    loadobject();
+}
+
+
+var httpc3 = new XMLHttpRequest();
+httpc3.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200) {
+        OBJECT = JSON.parse(this.responseText);
+        loadobject();
+    }
+};
+httpc3.open("GET", "fileloader.php?filename=" + OBJECT.NAME + ".txt", true);
+httpc3.send();
+
+function loadobject(){
+    document.getElementById("OBJECTtable").innerHTML = "";
+    document.getElementById("NAMETITLE").innerHTML = OBJECT.NAME;
+    document.getElementById("jsonlink").href = OBJECT.NAME + ".txt";
+    
+    for(var attribute in OBJECT){
+        if(attribute != "NAME"){
+            var newtr = document.createElement("TR");
+            newtr.className = "attribute";
+            document.getElementById("OBJECTtable").appendChild(newtr);
+            var newtd = document.createElement("TD");
+            newtd.innerHTML = attribute;
+            newtr.appendChild(newtd);
+            var newinput = document.createElement("INPUT");
+            newinput.value = OBJECT[attribute];
+            newinput.id = attribute;
+            newinput.onchange = function(){
+                attribute = this.id;
+                OBJECT[attribute] = this.value;
+                savejson();
+                loadobject();
+            }
+            var newtd = document.createElement("TD");
+            newtd.appendChild(newinput);
+            newtr.appendChild(newtd);
+            if(OBJECT[attribute].substring(0,4) == "http"){
+                var newtd = document.createElement("TD");
+                var newa = document.createElement("A");
+                newa.href = OBJECT[attribute];
+                newa.innerHTML = OBJECT[attribute];
+                newtd.appendChild(newa);
+                newtr.appendChild(newtd);
+            }
+            var newtd = document.createElement("TD");
+            newtd.innerHTML = "X";
+            newtd.className = "deletebutton";
+            newtd.id = "DELETE." + attribute;
+            newtd.onclick = function(){
+                deleteattribute = this.id.split("DELETE.")[1];
+                var newobject = {}
+                for(var attribute in OBJECT){
+                    if(attribute != deleteattribute){
+                        newobject[attribute] = OBJECT[attribute];
+                    }
+                }
+                OBJECT = newobject;
+                savejson();
+                loadobject();
+            }
+            newtr.appendChild(newtd);
+            
+        }
+    }
+    rainbow(document.getElementsByClassName("attribute"));    
+
+}
+
+
+
+function savejson(){
+
+    var url = "filesaver.php";        
+    var httpc2 = new XMLHttpRequest();
+    httpc2.open("POST", url, true);
+    httpc2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    httpc2.send("data="+encodeURIComponent(JSON.stringify(OBJECT,null,"    "))+"&filename=" + OBJECT.NAME + ".txt");//send text to filesaver.php
+
+}
+
+
+codesquaresize = 170;
+marginsize = 40;
+fontsize = 12;
+//globalurl = "http://www.trashrobot.org/qrcode.html";
+globalurl = window.location.href;
+qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: globalurl,
+	width: codesquaresize,
+	height: codesquaresize,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
+    
+    
+motd = "";
+var httpc = new XMLHttpRequest();
+httpc.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        motd = this.responseText;
+        document.getElementById("walltextarea").value = motd;  
+    }
+};
+httpc.open("GET", "fileloader.php?filename=wall." + OBJECT.NAME + ".txt", true);
+httpc.send();
+
+document.getElementById("walltextarea").onkeyup = function() {
+    scroll = this.value;
+    data = encodeURIComponent(this.value);
+    var httpc = new XMLHttpRequest();
+    var url = "filesaver.php";        
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpc.send("data="+data+"&filename=WALL." + OBJECT.NAME + ".txt");//send text to filesaver.php
+}
+    
+    
+</script>
+
+<STYLE>
+body{
+    background-color:#808080;
+}
+.deletebutton{
+    color:red;
+}
+
+.deletebutton:hover{
+    background-color:green;
+    cursor:pointer;
+}
+.deletebutton:active{
+    background-color:yellow;
+}
+
+    li,p{
+        font-size:2em;
+    }
+    textarea{
+        width:80%;
+        height:20em;
+        background-color:black;
+        color:#00ff00;
+        font-family:courier;
+    }
+    p{
+        padding:2em 2em 2em 2em;
+        text-align:justify;
+    }
+    IMG{
+        display:block;
+        text-align:center;
+        max-width:60%;
+        margin:auto;
+    }
+    H1{
+        TEXT-ALIGN:CENTER;
+    }
+    a{
+        color:blue;
+    }
+</STYLE>
+
+    </body>
+    </html>
+    
+    
