@@ -1,0 +1,16 @@
+{
+    "NAME": "DIRT WIZARD",
+    "LIBRARY": "https://www.denverlibrary.org",
+    "TRANSIT_AGENCY": "https://www.rtd-denver.com/",
+    "CONVEYANCE": "BIKE,BUS, TRASH CART",
+    "WATERSHED": "https://en.wikipedia.org/wiki/South_Platte_River",
+    "STREET": "https://en.wikipedia.org/wiki/U.S._Route_36",
+    "CITY": "https://en.wikipedia.org/wiki/Denver",
+    "EMAIL": "lafelabs@gmail.com",
+    "PHONE_NUMBER": "303-817-8283",
+    "FEDIVERSE": "https://cyberpunk.lol/@dirtwizard666",
+    "WEBPAGE": "https://www.trashrobot.net/",
+    "CODE_REPOSITORY": "https://github.com/LafeLabs/metabook",
+    "BOOK_DEPOSITORY": "LITTLE FREE LIBRARY ON SOUTH SIDE OF HIGHWAY AT SHERIDAN PARK N RIDE ON US 36 BY THE BUS STOP",
+    "MANIFESTO": "EVERYTHING FREE FOR EVERYONE EVERYWHERE RIGHT NOW!"
+}

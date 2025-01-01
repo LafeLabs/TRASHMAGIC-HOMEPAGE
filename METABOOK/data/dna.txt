@@ -1,0 +1,41 @@
+{
+    "html": [
+        "METABOOK.txt",
+        "README.md",
+        "book.txt",
+        "edit.html",
+        "fork.html",
+        "geometron.js",
+        "index.html",
+        "librarian.html",
+        "librarian.txt",
+        "qrcode-page.html",
+        "qrcode.html",
+        "readme.html",
+        "readmeeditor.html",
+        "trashmagic.css",
+        "trashmagic.html",
+        "trashmagic.js",
+        "trashmagicedit.html",
+        "wall.librarian.txt",
+        "webdestroyer.html",
+        "webeditor.html"
+    ],
+    "data": [
+        "LIBRARY.txt",
+        "dna.txt"
+    ],
+    "LIBRARY": [
+        "The_American_Evasion_of_Philosophy.txt"
+    ],
+    "php": [
+        "dir.txt",
+        "dnagenerator.txt",
+        "editor.txt",
+        "fileloader.txt",
+        "filesaver.txt",
+        "mkdir.txt",
+        "replicator.txt",
+        "text2php.txt"
+    ]
+}

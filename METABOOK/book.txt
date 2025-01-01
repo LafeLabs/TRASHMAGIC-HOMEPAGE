@@ -1,0 +1,27 @@
+{
+    "trashmagic": {
+        "repository": "https://github.com/LafeLabs/metabook",
+        "url": "https://trashrobot.net/The_American_Evasion_of_Philosophy/",
+        "json": "https://trashrobot.net/The_American_Evasion_of_Philosophy/book.txt",
+        "wall": "https://trashrobot.net/metabook/json/The_American_Evasion_of_Philosophy.html"
+    },
+    "url": "https://uwpress.wisc.edu/books/0541.htm",
+    "author": {
+        "name": "Cornel West",
+        "url": "http://www.cornelwest.com/"
+    },
+    "title": "The American Evasion of Philosophy",
+    "subtitle": "A Genealogy of Pragmatism",
+    "publisher": {
+        "name": "University of Wisconsin Press",
+        "url": "https://uwpress.wisc.edu/"
+    },
+    "ISBN": "0-299-11964-5",
+    "librarian": {
+        "contact": "https://cyberpunk.lol/@dirtwizard666",
+        "name": "DIRT WIZARD",
+        "city": "NEODENVER"
+    },
+    "format": "soft cover",
+    "images": {}
+}

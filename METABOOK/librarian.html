@@ -1,0 +1,186 @@
+    <!doctype html>
+    <html lang="en">
+    <head>
+       <meta charset="utf-8">
+       <!--
+    
+    TRASH MAGIC!
+
+
+       -->
+       <!--Stop Google:-->
+       <META NAME="robots" CONTENT="noindex,nofollow">
+  
+      <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAP//AP///wANAP8A5Dz6ABueRwAAt/8A6BonABo86AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREREREREREREREAAAEREREREQCIgREREd3dwAAB3d3d3d3d3d3d3d3d3d3d3d3d3VVVVVVVQAFVVAAVVVQIiBRAiIBEQIAIBECAAERAgAgFgIABmYCIiBmAiIGZgIiIGYCIgZmYCIAaIAAMzMzAAiIiIiIiIiIiIiIiIiIiIiIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+      
+       <title>TRASH MAGIC NETWORK</title>    
+       <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    </head>
+    <body>  
+    <div id = "qrcode"></div>
+    
+    <ul>
+        <LI>
+            <A href= "index.html">HOME</A>
+        </LI>
+        <li>
+            <a href = "webeditor.html">HTML EDITOR</a>
+        </li>
+    </ul>
+
+            
+<h1>LIBRARIAN</h1>
+
+
+<table id = "librariantable"></table>
+
+<textarea id = "walltextarea"></textarea>
+
+
+<script>
+
+/*
+LIBRARIAN = {};
+LIBRARIAN.NAME = "DIRT WIZARD";
+LIBRARIAN.LIBRARY = "https://www.denverlibrary.org";
+LIBRARIAN.TRANSIT_AGENCY = "https://www.rtd-denver.com/";
+LIBRARIAN.CONVEYANCE = "BIKE,BUS";
+LIBRARIAN.WATERSHED = "https://en.wikipedia.org/wiki/South_Platte_River";
+LIBRARIAN.STREET = "https://en.wikipedia.org/wiki/U.S._Route_36";
+LIBRARIAN.CITY = "https://en.wikipedia.org/wiki/Denver";
+LIBRARIAN.EMAIL = "lafelabs@gmail.com";
+LIBRARIAN.PHONE_NUMBER = "303-817-8283";
+LIBRARIAN.FEDIVERSE = "https://cyberpunk.lol/@dirtwizard666";
+LIBRARIAN.WEBPAGE = "https://www.trashrobot.net/";
+LIBRARIAN.CODE_REPOSITORY = "https://github.com/LafeLabs/metabook";
+LIBRARIAN.BOOK_DEPOSITORY = "LITTLE FREE LIBRARY ON SOUTH SIDE OF HIGHWAY AT SHERIDAN PARK N RIDE ON US 36 BY THE BUS STOP";
+LIBRARIAN.MANIFESTO = "EVERYTHING FREE FOR EVERYONE EVERYWHERE RIGHT NOW!";
+
+
+savejson();
+*/
+
+//document.getElementById("jsonpre").innerHTML = JSON.stringify(LIBRARIAN,null,"    ");
+var httpc3 = new XMLHttpRequest();
+httpc3.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200) {
+        LIBRARIAN = JSON.parse(this.responseText);
+        loadlibrarian();
+    }
+};
+httpc3.open("GET", "fileloader.php?filename=LIBRARIAN.txt", true);
+httpc3.send();
+
+function loadlibrarian(){
+    for(var attribute in LIBRARIAN){
+        var newtr = document.createElement("TR");
+        document.getElementById("librariantable").appendChild(newtr);
+        var newtd = document.createElement("TD");
+        newtd.innerHTML = attribute;
+        newtr.appendChild(newtd);
+        var newinput = document.createElement("INPUT");
+        newinput.value = LIBRARIAN[attribute];
+        newinput.id = attribute;
+        newinput.onchange = function(){
+            attribute = this.id;
+            LIBRARIAN[attribute] = this.value;
+            savejson();
+        }
+        var newtd = document.createElement("TD");
+        newtd.appendChild(newinput);
+        newtr.appendChild(newtd);
+        if(LIBRARIAN[attribute].substring(0,4) == "http"){
+            var newtd = document.createElement("TD");
+            var newa = document.createElement("A");
+            newa.href = LIBRARIAN[attribute];
+            newa.innerHTML = LIBRARIAN[attribute];
+            newtd.appendChild(newa);
+            newtr.appendChild(newtd);
+        }
+    }
+}
+
+
+
+function savejson(){
+
+    var url = "filesaver.php";        
+    var httpc2 = new XMLHttpRequest();
+    httpc2.open("POST", url, true);
+    httpc2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    httpc2.send("data="+encodeURIComponent(JSON.stringify(LIBRARIAN,null,"    "))+"&filename=LIBRARIAN.txt");//send text to filesaver.php
+
+}
+
+
+    codesquaresize = 170;
+    marginsize = 40;
+    fontsize = 12;
+    //globalurl = "http://www.trashrobot.org/qrcode.html";
+    globalurl = window.location.href;
+    qrcode = new QRCode(document.getElementById("qrcode"), {
+    	text: globalurl,
+    	width: codesquaresize,
+    	height: codesquaresize,
+    	colorDark : "#000000",
+    	colorLight : "#ffffff",
+    	correctLevel : QRCode.CorrectLevel.H
+    });
+    
+    
+motd = "";
+var httpc = new XMLHttpRequest();
+httpc.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        motd = this.responseText;
+        document.getElementById("walltextarea").value = motd;  
+    }
+};
+httpc.open("GET", "fileloader.php?filename=wall.librarian.txt", true);
+httpc.send();
+
+document.getElementById("walltextarea").onkeyup = function() {
+    scroll = this.value;
+    data = encodeURIComponent(this.value);
+    var httpc = new XMLHttpRequest();
+    var url = "filesaver.php";        
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpc.send("data="+data+"&filename=wall.librarian.txt");//send text to filesaver.php
+}
+    
+</script>
+
+<STYLE>
+    li,p{
+        font-size:2em;
+    }
+    textarea{
+        width:80%;
+        height:20em;
+        background-color:black;
+        color:#00ff00;
+        font-family:courier;
+    }
+    p{
+        padding:2em 2em 2em 2em;
+        text-align:justify;
+    }
+    IMG{
+        display:block;
+        text-align:center;
+        max-width:60%;
+        margin:auto;
+    }
+    H1{
+        TEXT-ALIGN:CENTER;
+    }
+    a{
+        color:blue;
+    }
+</STYLE>
+
+    </body>
+    </html>
+    
+    

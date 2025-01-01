@@ -1,0 +1,40 @@
+{
+    "NAME": "METABOOK",
+    "TITLE": "The American Evasion of Philosophy",
+    "AUTHOR": "Cornel West",
+    "DATE": "1989",
+    "PUBLISHER": {
+        "NAME": "THE UNIVERSITY OF WISCONSIN PRESS",
+        "LOCATION": "MADISON, WISCONSIN",
+        "URL": "https://uwpress.wisc.edu/"
+    },
+    "URLS": [
+        "https://uwpress.wisc.edu/books/0541.htm",
+        "https://trashrobot.net/The_American_Evasion_of_Philosophy/"
+    ],
+    "URL": "https://trashrobot.net/The_American_Evasion_of_Philosophy/",
+    "ISBN": "0-299-11964-5",
+    "WATERSHED": "SOUTH PLATTE RIVER",
+    "STREET": "US ROUTE 36",
+    "CITY": "NEODENVER",
+    "LIBRARIAN": {
+        "NAME": "DIRT WIZARD",
+        "URL": "HTTPS://WWW.TRASHROBOT.NET",
+        "FEDIVERSE": "https://cyberpunk.lol/@dirtwizard666"
+    },
+    "FORMAT": "6X9 PERFECTBOUND, 279 PAGES",
+    "MANIFESTO": "EVERYTHING FREE FOR EVERYONE EVERYWHERE RIGHT NOW!",
+    "TAGLINE": "FREE PHILOSOPHY BOOK!",
+    "NOTES": "I BOUGHT THIS BOOK BECAUSE I LIKE PROFESSOR WEST'S OTHER WORK BUT IT IS TOO ACADEMIC FOR ME SO I AM PASSING IT ALONG TO SOMEONE WHO CAN REALLY APPRECIATE THIS DEEP DIVE INTO AMERICAN PHILOSOPHICAL HISTORY",
+    "WALL": "THIS IS THE WALL. IT IS WHERE WE WRITE LITTLE NOTES TO ONE ANOTHER ABOUT THIS BOOK AND ABOUT METABOOK.",
+    "MAGIC": [
+        "TRASH",
+        "DIRT",
+        "BOOK",
+        "CHAOS",
+        "WEB",
+        "SUN",
+        "WATER",
+        "STREET"
+    ]
+}

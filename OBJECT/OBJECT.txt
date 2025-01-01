@@ -1,7 +1,4 @@
 {
     "NAME": "OBJECT",
-    "TYPE": "TEMPLATE",
-    "PLACE": "NEODENVER",
-    "WEBPAGE": "https://trashrobot.net/",
-    "MANIFESTO": "EVERYTHING FREE FOR EVERYONE EVERYWHERE RIGHT NOW!"
+    "TYPE": "ABSTRACT"
 }

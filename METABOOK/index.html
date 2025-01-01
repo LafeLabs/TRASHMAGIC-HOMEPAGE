@@ -1,0 +1,326 @@
+    <!doctype html>
+    <html lang="en">
+    <head>
+       <meta charset="utf-8">
+<!--<METABOOK>{
+    "NAME": "METABOOK",
+    "TITLE": "The American Evasion of Philosophy",
+    "AUTHOR": "Cornel West",
+    "DATE": "1989",
+    "PUBLISHER": {
+        "NAME": "THE UNIVERSITY OF WISCONSIN PRESS",
+        "LOCATION": "MADISON, WISCONSIN",
+        "URL": "https://uwpress.wisc.edu/"
+    },
+    "URLS": [
+        "https://uwpress.wisc.edu/books/0541.htm",
+        "https://trashrobot.net/The_American_Evasion_of_Philosophy/"
+    ],
+    "URL": "https://trashrobot.net/The_American_Evasion_of_Philosophy/",
+    "ISBN": "0-299-11964-5",
+    "WATERSHED": "SOUTH PLATTE RIVER",
+    "STREET": "US ROUTE 36",
+    "CITY": "NEODENVER",
+    "LIBRARIAN": {
+        "NAME": "DIRT WIZARD",
+        "URL": "HTTPS://WWW.TRASHROBOT.NET",
+        "FEDIVERSE": "https://cyberpunk.lol/@dirtwizard666"
+    },
+    "FORMAT": "6X9 PERFECTBOUND, 279 PAGES",
+    "MANIFESTO": "EVERYTHING FREE FOR EVERYONE EVERYWHERE RIGHT NOW!",
+    "TAGLINE": "FREE PHILOSOPHY BOOK!",
+    "NOTES": "I BOUGHT THIS BOOK BECAUSE I LIKE PROFESSOR WEST'S OTHER WORK BUT IT IS TOO ACADEMIC FOR ME SO I AM PASSING IT ALONG TO SOMEONE WHO CAN REALLY APPRECIATE THIS DEEP DIVE INTO AMERICAN PHILOSOPHICAL HISTORY",
+    "WALL": "THIS IS THE WALL. IT IS WHERE WE WRITE LITTLE NOTES TO ONE ANOTHER ABOUT THIS BOOK AND ABOUT METABOOK.",
+    "MAGIC": [
+        "TRASH",
+        "DIRT",
+        "BOOK",
+        "CHAOS",
+        "WEB",
+        "SUN",
+        "WATER",
+        "STREET"
+    ]
+}</METABOOK>-->
+
+      <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAP//AP///wANAP8A5Dz6ABueRwAAt/8A6BonABo86AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREREREREREREREAAAEREREREQCIgREREd3dwAAB3d3d3d3d3d3d3d3d3d3d3d3d3VVVVVVVQAFVVAAVVVQIiBRAiIBEQIAIBECAAERAgAgFgIABmYCIiBmAiIGZgIiIGYCIgZmYCIAaIAAMzMzAAiIiIiIiIiIiIiIiIiIiIiIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+      
+       <title>TRASH MAGIC NETWORK</title>    
+       <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>       
+       <script src = "trashmagic.js"></script>
+    </head>
+    <body>  
+
+    <a href = "edit.html"><h1>EDIT THIS PAGE</h1></a>
+
+    
+<h1 id = "title">METABOOK</h1>
+
+<div id = "qrcode"></div>
+
+<UL id = "LIST"></UL>
+
+<h1>JSON</h1>
+
+<P>TO POST BOOK TO LIBRARY ENTER A NEW NAME HERE: <INPUT id = "nameinput"></P>
+
+<textarea id = "jsontextarea"></textarea>
+<h1 class ="button" id = "jsonimportbutton">CLICK HERE TO IMPORT JSON</h1>
+<h1 class ="button" id = "jsonresetbutton">CLICK HERE TO RESET JSON</h1>
+
+<h1>LIBRARY</h1>
+
+<UL id = "LIBRARY"></UL>
+
+<script>
+
+    
+    titles = document.getElementsByTagName("H1");
+    for(var index = 0;index < titles.length;index++){
+        rainbowstring(titles[index]);    
+    }
+
+var httpc3 = new XMLHttpRequest();
+httpc3.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200) {
+        METABOOK = JSON.parse(this.responseText);
+        loadjsonvals();
+    }
+};
+httpc3.open("GET", "fileloader.php?filename=METABOOK.txt", true);
+httpc3.send();
+
+function loadjsonvals(){
+    document.getElementById("jsontextarea").value = JSON.stringify(METABOOK,null,"    ");
+    document.getElementById("LIST").innerHTML = "";
+    for(var attribute in METABOOK){
+        if(attribute != "NAME"){
+            var newli = document.createElement("LI");
+            document.getElementById("LIST").appendChild(newli);
+            if(typeof METABOOK[attribute] === 'object'){
+                var newul = document.createElement("UL");
+                newli.innerHTML = attribute + ":";
+                newli.appendChild(newul);
+                for(subattribute in METABOOK[attribute]){
+                    var newsubli = document.createElement("LI");
+                    newul.appendChild(newsubli);
+                    if(subattribute == "URL" || attribute == "URLS"){
+                        newsubli.innerHTML = "<a href = \"" + METABOOK[attribute][subattribute] + "\">" + subattribute + ":" + METABOOK[attribute][subattribute] + "</a>";
+                    }
+                    else{
+                        newsubli.innerHTML = subattribute + ":" + METABOOK[attribute][subattribute];
+                    }
+
+                    
+                }        
+            }
+            else{
+                if(attribute == "URL"){
+                    newli.innerHTML = "<a href = \"" + METABOOK[attribute] + "\">" + attribute + ":" + METABOOK[attribute] + "</a>";
+                }
+                else{
+                    newli.innerHTML = attribute + ":" + METABOOK[attribute];
+                }
+            }
+        }
+    }
+    rainbow(document.getElementById("LIST").getElementsByTagName("LI"));
+}
+
+
+
+function savejson(){
+
+    var url = "filesaver.php";        
+    var httpc2 = new XMLHttpRequest();
+    httpc2.open("POST", url, true);
+    httpc2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    httpc2.send("data="+encodeURIComponent(JSON.stringify(METABOOK,null,"    "))+"&filename=METABOOK.txt");//send text to filesaver.php
+
+}
+
+
+    codesquaresize = 170;
+    marginsize = 40;
+    fontsize = 12;
+    //globalurl = "http://www.trashrobot.org/qrcode.html";
+    globalurl = window.location.href;
+    qrcode = new QRCode(document.getElementById("qrcode"), {
+    	text: globalurl,
+    	width: codesquaresize,
+    	height: codesquaresize,
+    	colorDark : "#000000",
+    	colorLight : "#ffffff",
+    	correctLevel : QRCode.CorrectLevel.H
+    });
+    
+    
+document.getElementById("nameinput").value = "";
+document.getElementById("nameinput").onchange = function(){
+    newname = this.value;
+    var newjson = METABOOK;
+    newjson.NAME = newname;
+    var url = "filesaver.php";        
+    var httpc2 = new XMLHttpRequest();
+    httpc2.open("POST", url, true);
+    httpc2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    httpc2.send("data="+encodeURIComponent(JSON.stringify(newjson,null,"    "))+"&filename=LIBRARY/" + newname + ".txt");//send text to filesaver.php
+    document.getElementById("nameinput").value = "";
+}
+
+document.getElementById("jsonimportbutton").onclick = function(){
+    METABOOK = JSON.parse(document.getElementById("jsontextarea").value);    
+    loadjsonvals();
+    savejson();
+}
+
+document.getElementById("jsonresetbutton").onclick = function(){
+    METABOOK = {
+        "NAME": "METABOOK",
+        "TITLE": "The American Evasion of Philosophy",
+        "AUTHOR": "Cornel West",
+        "DATE": "1989",
+        "PUBLISHER": {
+            "NAME": "THE UNIVERSITY OF WISCONSIN PRESS",
+            "LOCATION": "MADISON, WISCONSIN",
+            "URL": "https://uwpress.wisc.edu/"
+        },
+        "URLS": [
+            "https://uwpress.wisc.edu/books/0541.htm",
+            "https://trashrobot.net/The_American_Evasion_of_Philosophy/"
+        ],
+        "URL": "https://trashrobot.net/The_American_Evasion_of_Philosophy/",
+        "ISBN": "0-299-11964-5",
+        "WATERSHED": "SOUTH PLATTE RIVER",
+        "STREET": "US ROUTE 36",
+        "CITY": "NEODENVER",
+        "LIBRARIAN": {
+            "NAME": "DIRT WIZARD",
+            "URL": "HTTPS://WWW.TRASHROBOT.NET",
+            "FEDIVERSE": "https://cyberpunk.lol/@dirtwizard666"
+        },
+        "FORMAT": "6X9 PERFECTBOUND, 279 PAGES",
+        "MANIFESTO": "EVERYTHING FREE FOR EVERYONE EVERYWHERE RIGHT NOW!",
+        "TAGLINE": "FREE PHILOSOPHY BOOK!",
+        "NOTES": "I BOUGHT THIS BOOK BECAUSE I LIKE PROFESSOR WEST'S OTHER WORK BUT IT IS TOO ACADEMIC FOR ME SO I AM PASSING IT ALONG TO SOMEONE WHO CAN REALLY APPRECIATE THIS DEEP DIVE INTO AMERICAN PHILOSOPHICAL HISTORY",
+        "WALL": "THIS IS THE WALL. IT IS WHERE WE WRITE LITTLE NOTES TO ONE ANOTHER ABOUT THIS BOOK AND ABOUT METABOOK.",
+        "MAGIC": [
+            "TRASH",
+            "DIRT",
+            "BOOK",
+            "CHAOS",
+            "WEB",
+            "SUN",
+            "WATER",
+            "STREET"
+        ]
+    };
+    loadjsonvals();
+    savejson();
+    
+}
+
+
+LIBRARY = [];
+var httpc9 = new XMLHttpRequest();
+    httpc9.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        LIBRARY = JSON.parse(this.responseText);
+        for(var index = LIBRARY.length - 1;index >= 0;index--) {
+            var newli = document.createElement("LI");
+            newli.innerHTML = LIBRARY[index];
+            newli.className = "button";
+            newli.onclick = function(){
+                filename = this.innerHTML;
+
+            }
+            document.getElementById("LIBRARY").appendChild(newli);
+        }
+        
+        var url = "filesaver.php";        
+        var httpc2 = new XMLHttpRequest();
+        httpc2.open("POST", url, true);
+        httpc2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        httpc2.send("data="+encodeURIComponent(JSON.stringify(LIBRARY,null,"    "))+"&filename=data/LIBRARY.txt");//send text to filesaver.php
+
+        rainbow(document.getElementById("LIBRARY").getElementsByTagName("LI"));
+        
+    }
+};
+httpc9.open("GET", "dir.php?filename=LIBRARY", true);
+httpc9.send();
+    
+
+</script>
+
+<STYLE>
+h1{
+    font-size:4em;
+    font-family:arial;
+}
+    body{
+        background-color:#404040;
+        font-size:1em;
+    }
+    input{
+        background-color:black;
+        font-family:courier;
+        color:#00ff00;
+        font-size:1em;
+    }
+    P{
+        BORDER:SOLID;
+        font-family:courier;
+        color:White;
+        font-size:2em;
+        background-color:#0000ff;
+        border-radius:0.5EM;
+        border-width:5px;
+        margin:1em 1em 1em 1em;
+        padding:1em 1em 1em 1em;
+    }
+    li{
+        font-family:arial;
+        border-radius:5px;
+        margin:1em 1em 1em 1em;
+        padding:1em 1em 1em 1em;
+
+    }
+    #jsontextarea{
+        width:80%;
+        display:block;
+        margin:auto;
+        font-family:courier;
+        background-color:black;
+        color:#00ff00;
+        overflow:scroll;
+        padding: 1em 1em 1em 1em;
+        height:20em;        
+    }
+    IMG{
+        display:block;
+        text-align:center;
+        max-width:60%;
+        margin:auto;
+    }
+    H1{
+        TEXT-ALIGN:CENTER;
+    }
+    a{
+        color:blue;
+    }
+    .button{
+        cursor:pointer;
+        border:solid;
+        border-radius:10px;
+        margin:1em 1em 1em 1em;
+        padding:1em 1em 1em 1em;
+
+    }
+</STYLE>
+
+    </body>
+    </html>
+    
+    
