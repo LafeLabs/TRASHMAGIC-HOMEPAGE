@@ -1,0 +1,11 @@
+[
+    "WORD",
+    "WORD",
+    "CHAOS",
+    "CHAOS",
+    "WORD",
+    "WORD",
+    "CHAOS",
+    "CHAOS",
+    "WORD"
+]

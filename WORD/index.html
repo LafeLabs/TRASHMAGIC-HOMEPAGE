@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <!--
+WORD
+    -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAP//AP///wANAP8A5Dz6ABueRwAAt/8A6BonABo86AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREREREREREREREAAAEREREREQCIgREREd3dwAAB3d3d3d3d3d3d3d3d3d3d3d3d3VVVVVVVQAFVVAAVVVQIiBRAiIBEQIAIBECAAERAgAgFgIABmYCIiBmAiIGZgIiIGYCIgZmYCIAaIAAMzMzAAiIiIiIiIiIiIiIiIiIiIiIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+
+    <!--Stop Google:-->
+    <META NAME="robots" CONTENT="noindex,nofollow">
+               <script src = "trashmagic.js"></script>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>  
+<DIV id = "WORDFEED"></DIV>
+
+<div id = "qrcode"></div>
+
+<script>
+
+//WORD = ["WORD","WORD","WORD"];
+
+WORD = [];
+var httpc = new XMLHttpRequest();
+httpc.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200) {
+        WORD = JSON.parse(this.responseText);
+        loadword();
+    }
+};
+httpc.open("GET", "fileloader.php?filename=WORD.txt", true);
+httpc.send();
+
+
+
+function loadword(){
+    if(WORD.length < 1){
+        WORD = ["WORD"];
+        savejson();
+    }
+    document.getElementById("WORDFEED").innerHTML = "";
+    for(var index = 0;index < WORD.length;index++){
+        var newdiv = document.createElement("DIV");
+        newdiv.id = index.toString();
+        newdiv.className = "WORD";
+        var newspan = document.createElement("SPAN");
+        newspan.innerHTML = "X";
+        newspan.className = "DELETEBUTTON";
+        newspan.onclick = function(){
+            thisid = this.parentElement.id;
+            thisindex = parseInt(thisid);
+            newword = [];
+            for(var subindex = 0;subindex < WORD.length;subindex++){
+                if(subindex != thisindex){
+                    newword.push(WORD[subindex]);
+                }
+            }
+            WORD=newword;            
+            savejson();
+            loadword();
+
+        }
+        var newinput = document.createElement("INPUT");
+        newinput.value = WORD[index];
+        newdiv.appendChild(newspan);
+        newdiv.appendChild(newinput);
+        document.getElementById("WORDFEED").appendChild(newdiv);
+        newinput.onchange = function(){
+            thisid = this.parentElement.id;
+            thisindex = parseInt(thisid);
+            newword = [this.value];
+            for(var subindex = 0;subindex < thisindex;subindex++){
+                    newword.push(WORD[subindex]);
+            }
+            newword.push(this.value);
+            for(var subindex = thisindex;subindex < WORD.length;subindex++){
+                    newword.push(WORD[subindex]);
+            }
+            WORD=newword;            
+            savejson();
+            loadword();
+    
+        }
+    }
+    document.getElementsByTagName("INPUT")[0].select();
+    rainbow(document.getElementsByClassName("WORD"));
+}
+
+codesquaresize = 170;
+marginsize = 40;
+fontsize = 12;
+//globalurl = "http://www.trashrobot.org/qrcode.html";
+globalurl = window.location.href;
+qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: globalurl,
+	width: codesquaresize,
+	height: codesquaresize,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
+
+
+
+function savejson(){
+
+    var url = "filesaver.php";        
+    var httpc = new XMLHttpRequest();
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    httpc.send("data="+encodeURIComponent(JSON.stringify(WORD,null,"    "))+"&filename=WORD.txt");//send text to filesaver.php
+
+}
+
+</script>
+<style>
+body{
+    background-color:#404040;
+}
+input{
+    background-color:black;
+    color:#00ff00;
+    font-family:courier;
+    font-size:4em;
+    border:solid;
+    border-color:#00ff00;
+}
+.WORD{
+    margin:1em 1em 1em 1em;
+    padding:1em 1em 1em 1em;
+    border-radius:1em;
+    text-align:center;
+}
+.DELETEBUTTON{
+    COLOR:red;
+    border:solid;
+    border-color:red;
+    border-width:5px;
+    font-size:3em;
+    background-color:black;
+    cursor:pointer;
+    text-align:center;
+}
+.button{
+    cursor:pointer;
+    text-align:center;
+    border:solid;
+    border-radius:3px;
+}
+.button:hover{
+    background-color:green;
+}
+.button:active{
+    background-color:yellow;
+}
+</style>
+</body>
+</html>
