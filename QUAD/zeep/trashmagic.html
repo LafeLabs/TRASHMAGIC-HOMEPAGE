@@ -1,0 +1,81 @@
+    <!doctype html>
+    <html lang="en">
+    <head>
+       <meta charset="utf-8">
+       <!--
+    
+    TRASH MAGIC!
+    
+    
+       -->
+       <!--Stop Google:-->
+       <META NAME="robots" CONTENT="noindex,nofollow">
+           
+<META NAME="robots" CONTENT="noindex,nofollow">
+    
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAP//AP///wANAP8A5Dz6ABueRwAAt/8A6BonABo86AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREREREREREREREAAAEREREREQCIgREREd3dwAAB3d3d3d3d3d3d3d3d3d3d3d3d3VVVVVVVQAFVVAAVVVQIiBRAiIBEQIAIBECAAERAgAgFgIABmYCIiBmAiIGZgIiIGYCIgZmYCIAaIAAMzMzAAiIiIiIiIiIiIiIiIiIiIiIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+    
+       <title>TRASH MAGIC NETWORK</title>    
+       <script src = "trashmagic.js"></script>
+       <link rel="stylesheet" href="trashmagic.css">
+       
+       <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    </head>
+    <body>    
+    
+    <a href= "index.html">HOME</a>
+
+    <H1>TRASH MAGIC!</H1>    
+    <div id = "qrcode"></div>
+        <P>
+            EVERYTHING FREE FOR EVERYONE EVERYWHERE RIGHT NOW! 
+        </P>
+        <P>
+            NO ONE IS FREE UNTIL EVERYONE IS FREE!
+        </P>        
+    
+    <a href = "trashmagicedit.html">TRASH MAGIC EDITOR!</a>
+    <a href = "ALBUM/">FREE SELF-REPLICATING ALBUM!</a>
+    <a href= "FREESTORE/">FREE STORE!</a>
+    <a href = "GEOMETRON/">GEOMETRON!</a>
+    <a href= "SQUARES/">TRASH MAGIC SQUARES!</a>
+    <a href= "SET/">TRASH MAGIC SET!</a>
+    <a href = "web.html">LEARN ABOUT THE WORLD WIDE WEB!</a>
+    <A HREF = "TAROT/">QUANTUM TRASH MAGIC TAROT!</A>
+    <a href = "TRASHBOOK/">TRASHBOOK!</a>
+    <a href = "TRASHBOOK/FIRST-BOOK-OF-GEOMETRON/">THE FIRST BOOK OF GEOMETRON!</a>
+    <a href = "TRASHBOOK/GEOMETRON-MAGIC/">GEOMETRON MAGIC!</a>
+    <a href = "GEOMETRON-HYPERCUBE/">GEOMETRON HYPERCUBE!</a>
+    <A HREF="FREEPANTS/">FREE PANTS!</A>
+    <A href = "fork.html">FORK!</A>
+    
+    
+    <script>
+    
+    titles = document.getElementsByTagName("H1");
+    for(var index = 0;index < titles.length;index++){
+        rainbowstring(titles[index]);    
+    }
+    rainbow(document.getElementsByTagName("A"));
+    
+    codesquaresize = 170;
+    marginsize = 40;
+    fontsize = 12;
+    //globalurl = "http://www.trashrobot.org/qrcode.html";
+    globalurl = window.location.href;
+    qrcode = new QRCode(document.getElementById("qrcode"), {
+    	text: globalurl,
+    	width: codesquaresize,
+    	height: codesquaresize,
+    	colorDark : "#000000",
+    	colorLight : "#ffffff",
+    	correctLevel : QRCode.CorrectLevel.H
+    });
+    
+    </script>
+    </body>
+    <style>
+    </style>
+    </html>
+    
+    

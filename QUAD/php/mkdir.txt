@@ -11,7 +11,7 @@ if(isset($_GET["replicator"])){
     
 }
 else{
-    copy("php/replicator.txt",$dirname."/replicator.php");    
+    copy("php/local-replicator.txt",$dirname."/replicator.php");    
 }
 
 

@@ -221,11 +221,7 @@ function addDeleteButtons(){
 
         var newdeletebutton = document.createElement("span");
         newdeletebutton.innerHTML = "DELETE";
-//        newdeletebutton.className = "button";
-        newdeletebutton.classList.add("button");
-        
-        newdeletebutton.classList.add("deletebutton");        
-        newdeletebutton.style.fontSize = "1em";
+        newdeletebutton.className = "button";
         dirlist[index].appendChild(newdeletebutton);
     }
     
@@ -253,16 +249,7 @@ document.getElementById("deleteonbutton").onclick = function(){
 
 </script>
 <STYLE>
-#deleteonbutton{
-    border:solid;
-    border-radius:5px;
-    border-width:5px;
-    border-color:red;
-    font-family:helvetica;
-    font-size:2em;
-    color:red;
-    text-align:center;
-}
+#
 
 .imagebox{
     border-top:solid;
