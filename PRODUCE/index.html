@@ -1,0 +1,120 @@
+    <!doctype html>
+    <html lang="en">
+    <head>
+       <meta charset="utf-8">
+       <!--
+    
+    TRASH MAGIC!
+    
+       -->
+       <!--Stop Google:-->
+       <META NAME="robots" CONTENT="noindex,nofollow">
+  
+      <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAP//AP///wANAP8A5Dz6ABueRwAAt/8A6BonABo86AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREREREREREREREAAAEREREREQCIgREREd3dwAAB3d3d3d3d3d3d3d3d3d3d3d3d3VVVVVVVQAFVVAAVVVQIiBRAiIBEQIAIBECAAERAgAgFgIABmYCIiBmAiIGZgIiIGYCIgZmYCIAaIAAMzMzAAiIiIiIiIiIiIiIiIiIiIiIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+      
+       <title>TRASH MAGIC NETWORK</title>    
+       <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.js"></script>
+    </head>
+    <body> 
+
+    <TEXTAREA ID = "WALL"></TEXTAREA>
+    <div>&#x1F350;</div>
+
+<script>
+
+divs = document.getElementsByTagName("DIV");
+
+function setup() {
+
+  createCanvas(innerWidth, innerHeight);    
+  strokeWeight(2);  
+  noFill();
+  stroke(0);
+  background(255);
+}
+
+
+timeindex = 0;
+
+VEGETABLE = 0X1F350;
+
+divs[0].innerHTML = "&#x" + VEGETABLE.toString(16) + ";";
+divs[0].x = innerWidth/2;
+divs[0].y = innerHeight;
+
+timeindex = 0;
+function draw(){    
+
+  background("#836539");
+  document.getElementById("WALL").style.left = (0.8*mouseX).toString() + "px";
+  document.getElementById("WALL").style.top = mouseY.toString() + "px";
+  document.getElementById("WALL").style.height = mouseY.toString() + "px";
+  document.getElementById("WALL").style.width = mouseY.toString() + "px";
+  document.getElementById("WALL").style.fontSize = (0.1*mouseY).toString() + "px";
+
+//  circle(mouseX,mouseY,mouseY);
+  //line(mouseX,innerHeight,mouseX,mouseY);
+  divs = document.getElementsByTagName("DIV");
+  divs[0].y = divs[0].y - 0.5;
+  if(divs[0].y < 0){
+      divs[0].y = 0.5*innerHeight;
+      VEGETABLE = 0X1F350 + Math.round(random(0,100));
+      divs[0].innerHTML = "&#x" + VEGETABLE.toString(16) + ";";
+      divs[0].x = Math.round(random(0,innerWidth));    
+  }
+  divs[0].style.left = (divs[0].x - 0.5*divs[0].y).toString() + "px";
+  divs[0].style.top = divs[0].y.toString() + "px";
+  divs[0].style.fontSize = divs[0].y.toString() + "px";
+
+} 
+
+
+
+function mouseClicked() {
+}
+
+WALL = "";
+var httpc = new XMLHttpRequest();
+httpc.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        WALL = this.responseText;
+        document.getElementById("WALL").value = WALL;  
+    }
+};
+httpc.open("GET", "fileloader.php?filename=WALL.txt", true);
+httpc.send();
+document.getElementById("WALL").select();
+document.getElementById("WALL").onkeyup = function() {
+    WALL = encodeURIComponent(this.value);
+    var httpc = new XMLHttpRequest();
+    var url = "filesaver.php";        
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpc.send("data=" + WALL + "&filename=WALL.TXT");//send text to filesaver.php
+}
+
+</script>
+<STYLE>
+body{
+    background-color:#836539;
+}
+#WALL{
+    position:absolute;
+    border:solid;
+    font-family:Comic Sans MS;
+    background-color:#836539;
+}
+div{
+    position:absolute;
+    z-index:1;
+    font-size:5em;
+    text-align:center;
+    width:1em;
+}
+</STYLE>
+
+</body>
+</html>
+    
+    

@@ -9,12 +9,10 @@
         "qrcode.html",
         "readme.html",
         "readmeeditor.html",
-        "tarot.html",
-        "tarot.js",
         "trashmagic.css",
         "trashmagic.html",
         "trashmagic.js",
-        "trashset.txt",
+        "trashmagicedit.html",
         "wall.html",
         "wall.txt",
         "web.html",
@@ -25,13 +23,17 @@
         "dna.txt"
     ],
     "php": [
+        "deletefile.txt",
         "dir.txt",
         "dnagenerator.txt",
         "editor.txt",
         "fileloader.txt",
         "filesaver.txt",
         "mkdir.txt",
+        "pngsave.txt",
+        "rdelete.txt",
         "replicator.txt",
-        "text2php.txt"
+        "text2php.txt",
+        "upload.txt"
     ]
 }
