@@ -12,7 +12,7 @@ $dna = json_decode($dnaraw);
 
 mkdir("data");
 mkdir("php");
-mkdir("freesore");
+mkdir("freestore");
 
 copy("https://raw.githubusercontent.com/LafeLabs/TRASHMAGIC-HOMEPAGE/refs/heads/main/QUAD/php/replicator.txt","replicator.php");
 
