@@ -13,7 +13,9 @@
       <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAP//AP///wANAP8A5Dz6ABueRwAAt/8A6BonABo86AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREREREREREREREAAAEREREREQCIgREREd3dwAAB3d3d3d3d3d3d3d3d3d3d3d3d3VVVVVVVQAFVVAAVVVQIiBRAiIBEQIAIBECAAERAgAgFgIABmYCIiBmAiIGZgIiIGYCIgZmYCIAaIAAMzMzAAiIiIiIiIiIiIiIiIiIiIiIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
       
        <title>TRASH MAGIC NETWORK</title>    
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.js"></script>       
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.js"></script>      
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src = "trashmagic.js"></script>    
     </head>
     <body>    
 <div id ="readme"></div>
@@ -30,6 +32,7 @@
     <div id = "imagefeed"></div>    
 </div>
 <div id ="fork">
+        <div id = "qrcode"></div>
         <table>
             <tr>
                 <td>ENTER NAME OF NEW FORK:</td>
@@ -47,15 +50,14 @@
 
 <script>
 
-document.getElementById("readme").style.right =  (innerWidth*0.5 + 1).toString() + "px";
-document.getElementById("readme").style.bottom =  (innerHeight*0.5 + 1).toString() + "px";
-document.getElementById("freestore").style.left =  (innerWidth*0.5 + 1).toString() + "px";
-document.getElementById("freestore").style.bottom =  (innerHeight*0.5 + 1).toString() + "px";
-document.getElementById("wall").style.right =  (innerWidth*0.5 + 1).toString() + "px";
-document.getElementById("wall").style.top =  (innerHeight*0.5 + 1).toString() + "px";
-
-document.getElementById("fork").style.top =  (innerHeight*0.5 + 1).toString() + "px";
-document.getElementById("fork").style.left =  (innerWidth*0.5 + 1).toString() + "px";
+document.getElementById("readme").style.right =  (innerWidth*0.5 + 10).toString() + "px";
+document.getElementById("readme").style.bottom =  (innerHeight*0.5 + 10).toString() + "px";
+document.getElementById("freestore").style.left =  (innerWidth*0.5 + 10).toString() + "px";
+document.getElementById("freestore").style.bottom =  (innerHeight*0.5 + 10).toString() + "px";
+document.getElementById("wall").style.right =  (innerWidth*0.5 + 10).toString() + "px";
+document.getElementById("wall").style.top =  (innerHeight*0.5 + 10).toString() + "px";
+document.getElementById("fork").style.top =  (innerHeight*0.5 + 10).toString() + "px";
+document.getElementById("fork").style.left =  (innerWidth*0.5 + 10).toString() + "px";
 
 scroll = "";
 rawhtml = "";
@@ -79,7 +81,12 @@ function loadscroll(scrollname){
             scroll = this.responseText;
             rawhtml = converter.makeHtml(scroll);
             document.getElementById("readme").innerHTML = rawhtml;
-
+        
+            titles = document.getElementsByTagName("H1");
+            for(var index = 0;index < titles.length;index++){
+                rainbowstring(titles[index]);    
+            }
+            rainbow(document.getElementsByTagName("A"));
             //			MathJax.Hub.Typeset();//tell Mathjax to update the math
     //			MathJax.Hub.Typeset();//tell Mathjax to update the math
         }
@@ -251,19 +258,44 @@ document.getElementById("deleteonbutton").onclick = function(){
     this.style.display  = "none";
 }
 
+
+    codesquaresize = 170;
+    marginsize = 40;
+    fontsize = 12;
+    //globalurl = "http://www.trashrobot.org/qrcode.html";
+    globalurl = window.location.href;
+    qrcode = new QRCode(document.getElementById("qrcode"), {
+    	text: globalurl,
+    	width: codesquaresize,
+    	height: codesquaresize,
+    	colorDark : "#000000",
+    	colorLight : "#ffffff",
+    	correctLevel : QRCode.CorrectLevel.H
+    });
 </script>
 <STYLE>
+#qrcode img{
+    border:solid;
+    border-color:white;
+    border-width:20px;
+}
 #deleteonbutton{
     border:solid;
     border-radius:5px;
     border-width:5px;
     border-color:red;
-    font-family:helvetica;
+    font-family:courier;
     font-size:2em;
     color:red;
     text-align:center;
 }
-
+input{
+    font-size:1em;
+    background-color:black;
+    color:#00ff00;
+    font-family:courier;
+    width:5em;
+}
 .imagebox{
     border-top:solid;
     padding-bottom:1em;
@@ -277,7 +309,7 @@ document.getElementById("deleteonbutton").onclick = function(){
     border-radius:5px;
     border-width:5px;
     border-color:red;
-    font-family:helvetica;
+    font-family:courier;
     font-size:2em;
     color:red;
 }
@@ -292,60 +324,68 @@ document.getElementById("deleteonbutton").onclick = function(){
 }
 body{
     overflow:hidden;
-    background-color:#404040L;
+    background-color:#404040;
 }
 img{
     max-width:50%;
     display:block;
     margin:auto;
 }
+body{
+    font-family:courier;
+    font-size:3em;
+    color:#00ff00;
+}
 #readme{
-    background-color:#eFFFeF;
+    background-color:black;
     position:absolute;
-    left:1px;
-    top:1px;
+    left:20px;
+    top:20px;
     border:solid;
     border-color:green;
     overflow:scroll;
-    border-width:5px;
-    border-radius:10px;
+    border-width:20px;
+    border-radius:20px;
     padding:1em 1em 1em 1em;
 }
 #wall{
-    background-color:#FFeFeF;
+    background-color:black;
     position:absolute;
-    bottom:1px;
-    left:1px;
+    bottom:20px;
+    left:20px;
     border:solid;
+    font-family:courier;
+    color:#00ff00;
+    font-size:1em;
     border-color:red;
     overflow:scroll;
-    border-width:5px;
-    border-radius:10px;
+    border-width:20px;
+    border-radius:20px;
     padding:1em 1em 1em 1em;
 }
 #freestore{
-    background-color:#eFefFF;
+    background-color:black;
     position:absolute;
-    right:1px;
-    top:1px;
+    right:20px;
+    top:20px;
     border:solid;
     border-color:blue;
     overflow:scroll;
-    border-width:5px;
-    border-radius:10px;
+    border-width:20px;
+    border-radius:20px;
     padding:1em 1em 1em 1em;
     
 }
 #fork{
-    background-color:#FFeFFF;
+    background-color:black;
     position:absolute;
-    right:1px;
-    bottom:1px;
+    right:20px;
+    bottom:20px;
     border:solid;
     border-color:purple;
     overflow:scroll;
-    border-width:5px;
-    border-radius:10px;
+    border-width:20px;
+    border-radius:20px;
     padding:1em 1em 1em 1em;
     
 }

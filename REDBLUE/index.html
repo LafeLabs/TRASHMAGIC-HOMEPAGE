@@ -16,19 +16,7 @@
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.js"></script>       
     </head>
     <body>    
-<div id ="readme"></div>
 <textarea id ="wall"></textarea>
-<div id ="freestore">
-    <div id = "imagefeedheader">
-        <form id = "uploadform" action="upload.php" method="post" enctype="multipart/form-data">
-                    <span id ="uploadspan">UPLOAD:</span>
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="UPLOAD IMAGE" name="submit" id ="submitinput">
-        </form>        
-    </div>
-    <h1>FREE STORE</h1>
-    <div id = "imagefeed"></div>    
-</div>
 <div id ="fork">
         <table>
             <tr>
@@ -40,6 +28,7 @@
                 <td><input id = "replicatorinput"/></td>
             </tr>
         </table>
+        <H2><a HREF = "../">UP TO MAIN LEVEL</a></H2>
         <ul id = "mainlist">
         </ul>
         <div class=  "button" id = "deleteonbutton">BECOME THE DESTROYER!</div>
@@ -47,47 +36,12 @@
 
 <script>
 
-document.getElementById("readme").style.right =  (innerWidth*0.5 + 1).toString() + "px";
-document.getElementById("readme").style.bottom =  (innerHeight*0.5 + 1).toString() + "px";
-document.getElementById("freestore").style.left =  (innerWidth*0.5 + 1).toString() + "px";
-document.getElementById("freestore").style.bottom =  (innerHeight*0.5 + 1).toString() + "px";
-document.getElementById("wall").style.right =  (innerWidth*0.5 + 1).toString() + "px";
-document.getElementById("wall").style.top =  (innerHeight*0.5 + 1).toString() + "px";
 
-document.getElementById("fork").style.top =  (innerHeight*0.5 + 1).toString() + "px";
+document.getElementById("wall").style.right =  (innerWidth*0.5 + 1).toString() + "px";
+
+
 document.getElementById("fork").style.left =  (innerWidth*0.5 + 1).toString() + "px";
 
-scroll = "";
-rawhtml = "";
-var converter = new showdown.Converter();
-// for more on options see here:
-// https://github.com/showdownjs/showdown/wiki/Showdown-Options
-converter.setOption('literalMidWordUnderscores', 'true');
-converter.setOption('tables', 'true')
-    
-filename = "README.md";
-loadscroll("README.md");
-
-
-function loadscroll(scrollname){
-    filename = scrollname;
-
-    document.getElementById("readme").innerHTML = "";
-    var httpc666 = new XMLHttpRequest();
-    httpc666.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            scroll = this.responseText;
-            rawhtml = converter.makeHtml(scroll);
-            document.getElementById("readme").innerHTML = rawhtml;
-
-            //			MathJax.Hub.Typeset();//tell Mathjax to update the math
-    //			MathJax.Hub.Typeset();//tell Mathjax to update the math
-        }
-    };
-    httpc666.open("GET", "fileloader.php?filename=" + scrollname, true);
-    httpc666.send();
-    //MathJax.Hub.Typeset();//tell Mathjax to update the math
-}
 
 currentfile = "wall.txt";
 
@@ -116,55 +70,6 @@ document.getElementById("wall").onkeyup = function() {
 
 deletemode = true;
 //deletemode = false;
-
-uploadImages = [];
-
-var httpcUpload = new XMLHttpRequest();
-httpcUpload.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        uploadImages = JSON.parse(this.responseText);
-        loadimagefeed();
-    }
-};
-httpcUpload.open("GET", "dir.php?filename=freestore", true);
-httpcUpload.send();
-
-function loadimagefeed(){
-
-    for(var index = uploadImages.length - 1;index >= 0;index--) {
-        var newuploadbox = document.createElement("DIV");
-        newuploadbox.classList.add("imagebox");
-        var newimg = document.createElement("IMG");
-        newimg.src = "freestore/" + uploadImages[index];
-        newimg.classList.add("uploadimage");
-        
-        newuploadbox.appendChild(newimg);
-        document.getElementById("imagefeed").appendChild(newuploadbox);
-
-//        var newdiv = document.createElement("DIV");
-  //      newdiv.innerHTML = uploadImages[index];
-    //    newdiv.className = "filelabel";
-      //  newuploadbox.appendChild(newdiv);
-    
-        if(deletemode){
-            var newspan = document.createElement("SPAN");
-            newspan.innerHTML = "DELETE";
-            newuploadbox.appendChild(newspan);
-            newspan.classList.add("button");
-            newspan.classList.add("deletebutton");
-            newspan.onclick = function(){
-                var imageurl =this.parentElement.getElementsByClassName("uploadimage")[0].src; 
-                var imagename = "freestore/" + imageurl.split("freestore/")[1];
-                var httpc = new XMLHttpRequest();
-                var url = "deletefile.php";         
-                httpc.open("POST", url, true);
-                httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-                httpc.send("filename=" + imagename);//send text to deletefile.php
-                this.parentElement.parentElement.removeChild(this.parentElement);
-            }   
-        }
-    }    
-}
 
 deleteprotect = true;//set to false to enable deletion of directories
 
@@ -221,7 +126,11 @@ function addDeleteButtons(){
 
         var newdeletebutton = document.createElement("span");
         newdeletebutton.innerHTML = "DELETE";
-        newdeletebutton.className = "button";
+//        newdeletebutton.className = "button";
+        newdeletebutton.classList.add("button");
+        
+        newdeletebutton.classList.add("deletebutton");        
+        newdeletebutton.style.fontSize = "1em";
         dirlist[index].appendChild(newdeletebutton);
     }
     
@@ -249,7 +158,16 @@ document.getElementById("deleteonbutton").onclick = function(){
 
 </script>
 <STYLE>
-#
+#deleteonbutton{
+    border:solid;
+    border-radius:5px;
+    border-width:5px;
+    border-color:red;
+    font-family:helvetica;
+    font-size:2em;
+    color:red;
+    text-align:center;
+}
 
 .imagebox{
     border-top:solid;
@@ -286,22 +204,12 @@ img{
     display:block;
     margin:auto;
 }
-#readme{
-    background-color:#eFFFeF;
-    position:absolute;
-    left:1px;
-    top:1px;
-    border:solid;
-    border-color:green;
-    overflow:scroll;
-    border-width:5px;
-    border-radius:10px;
-    padding:1em 1em 1em 1em;
-}
+
 #wall{
     background-color:#FFeFeF;
     position:absolute;
     bottom:1px;
+    top:1px;
     left:1px;
     border:solid;
     border-color:red;
@@ -310,26 +218,15 @@ img{
     border-radius:10px;
     padding:1em 1em 1em 1em;
 }
-#freestore{
+
+#fork{
     background-color:#eFefFF;
     position:absolute;
     right:1px;
+    bottom:1px;
     top:1px;
     border:solid;
-    border-color:blue;
-    overflow:scroll;
-    border-width:5px;
-    border-radius:10px;
-    padding:1em 1em 1em 1em;
-    
-}
-#fork{
-    background-color:#FFeFFF;
-    position:absolute;
-    right:1px;
-    bottom:1px;
-    border:solid;
-    border-color:purple;
+    border-color:BLUE;
     overflow:scroll;
     border-width:5px;
     border-radius:10px;

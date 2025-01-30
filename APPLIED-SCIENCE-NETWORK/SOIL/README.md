@@ -1,4 +1,4 @@
-# TRASH MAGIC WEB PAGE
+# WEB PAGE
 
  - [UP A LEVEL(../)](../)
  - [index.html](index.html)
